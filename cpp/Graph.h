@@ -172,11 +172,54 @@ public:
 		file.close();
 	}
 
+	void Floyd_algorithm() {
+		const double INF = 1e9;
+		
+		this -> shortest_path.clear();
+		for (int i = 0; i < this -> num_nodes; ++i) {
+			vector<double> vect;
+			vect.clear();
+			for (int j = 0; j < this -> num_nodes; ++j) {
+				vect.push_back(INF);
+			}
+			this -> shortest_path.push_back(vect);
+		}
+
+		for (int i = 0; i < this -> num_nodes; ++i) {
+			this -> shortest_path[i][i] = 0;
+		}
+
+		for (int i = 0; i < this -> num_edges; ++i) {
+			const int first = this -> edges[i].first;
+			const int second = this -> edges[i].second;
+			const double d = this -> edges[i].d;
+
+			if (d < this -> shortest_path[first][second]) {
+				this -> shortest_path[first][second] = d;
+			}
+			
+			if (d < this -> shortest_path[second][first]) {
+                this -> shortest_path[second][first] = d;
+            }
+		}
+
+		for (int k = 0; k < this -> num_nodes; ++k) {
+			for (int i = 0; i < this -> num_nodes; ++i) {
+				for (int j = 0; j < this -> num_nodes; ++j) {
+					if (this -> shortest_path[i][j] > this -> shortest_path[i][k] + this -> shortest_path[k][j]) {
+						this -> shortest_path[i][j] = this -> shortest_path[i][k] + this -> shortest_path[k][j];
+					}
+				}
+			}
+		}
+	}
+
 	int num_nodes;
 	int num_edges;
 	double W;
 	vector<Edge> edges;
 	vector<Coordinate> position;
+	vector< vector<double> > shortest_path;
 };
 
 #endif
