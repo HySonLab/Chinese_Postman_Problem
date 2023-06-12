@@ -21,7 +21,7 @@ int main(int argc, char **argv) {
 	cout << graph -> get_content() << endl;
 	
 	// Save the graph object to file
-	graph -> save_to_file("test.txt");
+	graph -> save_to_file("graph.txt");
 
 	// Run the Floyd's algorithm
 	graph -> Floyd_algorithm();

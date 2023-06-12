@@ -64,6 +64,29 @@ vector<string> parse_line(const string str, const char separator = ' ') {
 	return result;
 }
 
+// Convert a matrix to a string
+string to_str(const vector< vector<double> > matrix) {
+    string result = "";
+    for (int i = 0; i < matrix.size(); ++i) {
+        for (int j = 0; j < matrix[i].size(); ++j) {
+            result += to_string(matrix[i][j]) + " ";
+        }
+        if (i + 1 < matrix.size()) {
+            result += "\n";
+        }
+    }
+    return result;
+}
+
+// Convert a vector to a string
+string to_str(const vector<int> vect) {
+    string result = "";
+    for (int i = 0; i < vect.size(); ++i) {
+        result += to_string(vect[i]) + " ";
+    }
+    return result;
+}
+
 // Graph structure
 class Graph {
 public:
