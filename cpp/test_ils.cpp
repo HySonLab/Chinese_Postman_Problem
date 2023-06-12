@@ -23,15 +23,15 @@ int main(int argc, char **argv) {
 
     cout << "All-pair shortest paths:\n" << to_str(graph -> shortest_path) << endl;
 
-	// Greedy constructive heuristics
-	pair< vector<Edge>, double> result = Greedy_Constructive_Heuristic(graph);
+	// Iterated Local Search
+	pair< vector<Edge>, double> result = Iterated_Local_Search(graph);
 	const vector<Edge> sigma = result.first;
 	const double cost = result.second;
 
 	// Dynamic programming
 	pair< vector< vector<double> >, vector<int> > dp = dynamic_programming(graph, sigma);
 
-	cout << "Cost (greedy constructive heuristics): " << dp.first[0][0] << endl;
+	cout << "Cost (Iterated Local Search): " << dp.first[0][0] << endl;
 	assert(abs(cost - dp.first[0][0]) < 1e-6);
 
 	return 0;
