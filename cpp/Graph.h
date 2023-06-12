@@ -1,3 +1,7 @@
+// Graph structure for the load-dependent Chinese postman problem
+// Author: Dr. Truong Son Hy
+// Copyright 2023
+
 #ifndef __GRAPH_H_INCLUDED__
 #define __GRAPH_H_INCLUDED__
 
@@ -15,11 +19,17 @@
 
 using namespace std;
 
-// Infinity
+// +----------+
+// | Infinity |
+// +----------+
 const double INF = 1e9;
 
-// Edge structure
+
+// +----------------+
+// | Edge structure |
+// +----------------+
 struct Edge {
+	// Constructors
 	Edge(const Edge& another) {
 		first = another.first;
 		second = another.second;
@@ -34,6 +44,7 @@ struct Edge {
 		q = q_;
 	}
 
+	// For sorting decreasingly
 	bool operator < (const Edge& another) {
 		if (this -> d * this -> q > another.d * another.q) {
 			return true;
@@ -47,7 +58,10 @@ struct Edge {
 	double q;
 };
 
-// Coordinate structure
+
+// +----------------------+
+// | Coordinate structure |
+// +----------------------+
 struct Coordinate {
 	Coordinate(const double x_, const double y_) {
 		x = x_;
@@ -58,7 +72,10 @@ struct Coordinate {
 	double y;
 };
 
-// Convert a string into a vector of strings
+
+// +-------------------------------------------+
+// | Convert a string into a vector of strings |
+// +-------------------------------------------+
 vector<string> parse_line(const string str, const char separator = ' ') {
 	vector<string> result;
 	result.clear();
@@ -82,7 +99,10 @@ vector<string> parse_line(const string str, const char separator = ' ') {
 	return result;
 }
 
-// Convert a matrix to a string
+
+// +------------------------------+
+// | Convert a matrix to a string |
+// +------------------------------+
 string to_str(const vector< vector<double> > matrix) {
     string result = "";
     for (int i = 0; i < matrix.size(); ++i) {
@@ -96,7 +116,10 @@ string to_str(const vector< vector<double> > matrix) {
     return result;
 }
 
-// Convert a vector to a string
+
+// +------------------------------+
+// | Convert a vector to a string |
+// +------------------------------+
 string to_str(const vector<int> vect) {
     string result = "";
     for (int i = 0; i < vect.size(); ++i) {
@@ -105,7 +128,10 @@ string to_str(const vector<int> vect) {
     return result;
 }
 
-// Graph structure
+
+// +-----------------+
+// | Graph structure |
+// +-----------------+
 class Graph {
 public:
 	// Constructor
