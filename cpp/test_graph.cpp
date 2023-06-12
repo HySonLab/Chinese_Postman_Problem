@@ -1,3 +1,7 @@
+// Testing the graph structure for the load-dependent Chinese postman problem
+// Author: Dr. Truong Son Hy
+// Copyright 2023
+
 #include <iostream>
 #include <fstream>
 #include <cstring>
@@ -13,6 +17,7 @@
 
 using namespace std;
 
+// Main program
 int main(int argc, char **argv) {
 	// Load graph from file
 	Graph *graph = new Graph("data/E_10.txt");

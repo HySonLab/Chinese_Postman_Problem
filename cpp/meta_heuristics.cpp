@@ -1,3 +1,7 @@
+// Meta-heuristics for the load-dependent Chinese postman problem
+// Author: Dr. Truong Son Hy
+// Copyright 2023
+
 #include <iostream>
 #include <fstream>
 #include <cstring>
@@ -14,7 +18,10 @@
 
 using namespace std;
 
-// Dynamic Programming
+
+// +---------------------+
+// | Dynamic Programming |
+// +---------------------+
 pair< vector< vector<double> >, vector<int> > dynamic_programming(Graph *graph, const vector<Edge> sequence) {
 	// Start node
 	const int start_node = graph -> start_node;
@@ -149,7 +156,10 @@ pair< vector< vector<double> >, vector<int> > dynamic_programming(Graph *graph, 
 	return make_pair(f, direction);
 }
 
-// Compute cost
+
+// +--------------+
+// | Compute cost |
+// +--------------+
 double compute_cost(Graph *graph, const vector<Edge> sequence, const vector<int> direction) {
 	// Check if the graph has computed Floyd's algorithm before
     assert(graph -> shortest_path.size() == graph -> num_nodes);
@@ -210,7 +220,10 @@ double compute_cost(Graph *graph, const vector<Edge> sequence, const vector<int>
 	return cost;
 }
 
-// Greedy Constructive Heuristics
+
+// +--------------------------------+
+// | Greedy Constructive Heuristics |
+// +--------------------------------+
 pair< vector<Edge>, double> Greedy_Constructive_Heuristic(Graph *graph) {
 	// Information
 	const int num_nodes = graph -> num_nodes;
@@ -269,7 +282,10 @@ pair< vector<Edge>, double> Greedy_Constructive_Heuristic(Graph *graph) {
 	return make_pair(sigma_star, best);
 }
 
-// Random exchange with probability 1/factor
+
+// +-------------------------------------------+
+// | Random exchange with probability 1/factor |
+// +-------------------------------------------+
 vector<Edge> random_exchange(const vector<Edge> edges, const int factor = 5) {
 	// Copy
 	vector<Edge> result;
@@ -289,7 +305,10 @@ vector<Edge> random_exchange(const vector<Edge> edges, const int factor = 5) {
 	return result;
 }
 
-// 1-OPT
+
+// +-------+
+// | 1-OPT |
+// +-------+
 pair< vector<Edge>, double> Method_1_OPT(Graph *graph, const vector<Edge> sigma) {
 	double best = INF;
 	vector<Edge> result;
@@ -330,7 +349,10 @@ pair< vector<Edge>, double> Method_1_OPT(Graph *graph, const vector<Edge> sigma)
 	return make_pair(result, best);
 }
 
-// 2-OPT
+
+// +-------+
+// | 2-OPT |
+// +-------+
 pair< vector<Edge>, double> Method_2_OPT(Graph *graph, const vector<Edge> sigma) {
     double best = INF;
     vector<Edge> result;
@@ -368,7 +390,10 @@ pair< vector<Edge>, double> Method_2_OPT(Graph *graph, const vector<Edge> sigma)
     return make_pair(result, best);
 }
 
-// 2-EXCHANGE
+
+// +------------+
+// | 2-EXCHANGE |
+// +------------+
 pair< vector<Edge>, double> Method_2_EXCHANGE(Graph *graph, const vector<Edge> sigma) {
     double best = INF;
     vector<Edge> result;
@@ -404,7 +429,10 @@ pair< vector<Edge>, double> Method_2_EXCHANGE(Graph *graph, const vector<Edge> s
     return make_pair(result, best);
 }
 
-// Iterated Local Search Meta-heuristic
+
+// +--------------------------------------------+
+// | Iterated Local Search (ILS) Meta-heuristic |
+// +--------------------------------------------+
 pair< vector<Edge>, double> Iterated_Local_Search(Graph *graph, const int k_max = 100) {
 	// Greedy constructive heuristic
 	pair< vector<Edge>, double > greedy  = Greedy_Constructive_Heuristic(graph);
@@ -445,7 +473,10 @@ pair< vector<Edge>, double> Iterated_Local_Search(Graph *graph, const int k_max 
 	return make_pair(sigma_star, best);
 }
 
-// Variable Neighborhood Search Meta-heuristic
+
+// +---------------------------------------------------+
+// | Variable Neighborhood Search (VNS) Meta-heuristic |
+// +---------------------------------------------------+
 pair< vector<Edge>, double> Variable_Neighborhood_Search(Graph *graph, const int k_max = 100) {
     // Greedy constructive heuristic
     pair< vector<Edge>, double > greedy  = Greedy_Constructive_Heuristic(graph);

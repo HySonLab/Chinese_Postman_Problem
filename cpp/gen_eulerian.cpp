@@ -1,3 +1,7 @@
+// Generate Eulerian cases for the load-dependent Chinese postman problem
+// Author: Dr. Truong Son Hy
+// Copyright 2023
+
 #include <iostream>
 #include <fstream>
 #include <cstring>
@@ -11,17 +15,20 @@
 
 using namespace std;
 
+// Hyper-parameters
 const string directory = "data/";
 const int MAX_X = 10;
 const int MAX_Y = 10;
 const int MAX_Q = MAX_X * MAX_Y;
 
+// Computing the Euclidean distance
 double Euclidean_distance(const pair<double, double> p1, const pair<double, double> p2) {
 	const double dx = p1.first - p2.first;
 	const double dy = p1.second - p2.second;
 	return sqrt(dx * dx + dy * dy);
 }
 
+// Generate data
 void generate(
 	const string file_name, 
 	const int num_nodes, 
@@ -161,6 +168,7 @@ void generate(
 	file.close();
 }
 
+// Main program
 int main(int argc, char **argv) {
 	// Fix random seed
 	srand(0);
