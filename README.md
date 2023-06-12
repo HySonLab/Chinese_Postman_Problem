@@ -1,4 +1,6 @@
-# The Chinese Postman Problem with load-dependent costs
+# Implementation for the Chinese Postman Problem with load-dependent costs
+## Author: Dr. Truong Son Hy's research group
+## Copyright 2023
 
 Contributors:
 * Truong Son Hy (Correspondent / PI)

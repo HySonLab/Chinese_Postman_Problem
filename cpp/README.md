@@ -1,4 +1,6 @@
-# Implementation in C++
+# Implementation in C++ for the load-dependent Chinese postman problem
+## Author: Dr. Truong Son Hy
+## Copyright 2023
 
 Generate Eulerian cases:
 
@@ -12,6 +14,10 @@ Example of how to load / save graph from / to file, use the object and run the F
 
 ```test_graph.cpp```
 
+Test the dynamic programming for finding the optimal directions of edges:
+
+```test_dp.cpp```
+
 Test the Greedy Constructive Heuristics:
 
 ```test_greedy.cpp```
@@ -22,5 +28,5 @@ Test the Iterative Local Search:
 
 Test the Variable Neighborhood Search:
 
-```test_vnr.cpp```
+```test_vns.cpp```
 
