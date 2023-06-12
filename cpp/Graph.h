@@ -14,6 +14,7 @@
 
 using namespace std;
 
+// Edge structure
 struct Edge {
 	Edge(const int first_, const int second_, const double d_, const double q_) {
 		first = first_;
@@ -28,6 +29,7 @@ struct Edge {
 	double q;
 };
 
+// Coordinate structure
 struct Coordinate {
 	Coordinate(const double x_, const double y_) {
 		x = x_;
@@ -38,6 +40,7 @@ struct Coordinate {
 	double y;
 };
 
+// Convert a string into a vector of strings
 vector<string> parse_line(const string str, const char separator = ' ') {
 	vector<string> result;
 	result.clear();
@@ -61,11 +64,14 @@ vector<string> parse_line(const string str, const char separator = ' ') {
 	return result;
 }
 
+// Graph structure
 class Graph {
 public:
+	// Constructor
 	Graph(){
 	}
 
+	// Constructor given another object
 	Graph(Graph *another) {
 		this -> num_nodes = another -> num_nodes;
 		this -> num_edges = another -> num_edges;
@@ -82,6 +88,7 @@ public:
 		}
 	}
 
+	// Constructor given the content
 	Graph(const int num_nodes, const int num_edges, const double W, const vector<Edge> edges, const vector<Coordinate> position) {
         this -> num_nodes = num_nodes;
         this -> num_edges = num_edges;
@@ -98,6 +105,7 @@ public:
         }
     }
 
+	// Load the content from file
 	void load_from_file(const string file_name) {
 		ifstream file;
         file.open(file_name);
@@ -142,10 +150,12 @@ public:
         file.close();
 	}
 
+	// Constructor given a file
 	Graph(const string file_name) {
 		load_from_file(file_name);
 	}
 
+	// Convert the content to a string
 	string get_content() {
 		string result = "";
 		result += "Number of nodes:\n";
@@ -165,6 +175,7 @@ public:
 		return result;
 	}
 
+	// Save the object to file
 	void save_to_file(const string file_name) {
 		ofstream file;
 		file.open(file_name);
@@ -172,6 +183,7 @@ public:
 		file.close();
 	}
 
+	// Floyd's algorithm to find all-pair shortest paths
 	void Floyd_algorithm() {
 		const double INF = 1e9;
 		
@@ -214,11 +226,22 @@ public:
 		}
 	}
 
+	// Number of nodes
 	int num_nodes;
+
+	// Number of edges
 	int num_edges;
+
+	// W
 	double W;
+
+	// Edges
 	vector<Edge> edges;
+
+	// Position of each node
 	vector<Coordinate> position;
+
+	// All-pair shortest paths (from Floyd's algorithm)
 	vector< vector<double> > shortest_path;
 };
 
