@@ -183,6 +183,23 @@ public:
 		file.close();
 	}
 
+	// Search edge
+	Edge get_edge(const int i, const int j) {
+		for (int k = 0; k < this -> edges.size(); ++k) {
+			const int first = this -> edges[k].first;
+			const int second = this -> edges[k].second;
+			const double d = this -> edges[k].d;
+			const double q = this -> edges[k].q;
+			if ((first == i) && (second == j)) {
+				return Edge(i, j, d, q);
+			}
+			if ((first == j) && (second == i)) {
+				return Edge(i, j, d, q);
+			}
+		}
+		return Edge(-1, -1, -1, -1);
+	}
+
 	// Floyd's algorithm to find all-pair shortest paths
 	void Floyd_algorithm() {
 		const double INF = 1e9;
@@ -225,6 +242,9 @@ public:
 			}
 		}
 	}
+
+	// Staring node is always indexed as 0
+	const int start_node = 0;
 
 	// Number of nodes
 	int num_nodes;
