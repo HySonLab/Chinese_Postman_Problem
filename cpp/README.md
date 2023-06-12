@@ -8,6 +8,6 @@ Graph object:
 
 ```Graph.h```
 
-Example of how to load and save graph from & to file, and use the object:
+Example of how to load / save graph from / to file, use the object and run the Floyd's algorithm:
 
 ```test_graph.cpp```
