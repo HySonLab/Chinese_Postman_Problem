@@ -11,3 +11,8 @@ Graph object:
 Example of how to load / save graph from / to file, use the object and run the Floyd's algorithm:
 
 ```test_graph.cpp```
+
+Test the greedy constructive heuristics:
+
+```test_greedy.cpp```
+

@@ -7,6 +7,7 @@
 #include <cmath>
 #include <vector>
 #include <thread>
+#include <algorithm>
 #include <assert.h>
 
 #include "Graph.h"
@@ -25,13 +26,10 @@ pair< vector< vector<double> >, vector<int> > dynamic_programming(Graph *graph, 
 	// Number of edges in this list
 	const int m = sequence.size();
 
-	// Constant
-    const double INF = 1e9;
-
 	// Initialize
     vector< vector<double> > f;
     f.clear();
-    for (int k = 0; k < graph -> num_nodes; ++k) {
+    for (int k = 0; k < m; ++k) {
         vector<double> vect;
         vect.clear();
         vect.push_back(INF);
@@ -41,7 +39,7 @@ pair< vector< vector<double> >, vector<int> > dynamic_programming(Graph *graph, 
 
     vector<int> direction;
     direction.clear();
-    for (int k = 0; k < graph -> num_nodes; ++k) {
+    for (int k = 0; k < m; ++k) {
         direction.push_back(-1);
     }
 
@@ -70,7 +68,7 @@ pair< vector< vector<double> >, vector<int> > dynamic_programming(Graph *graph, 
 	// For tracing
 	vector< vector<int> > choice;
     choice.clear();
-    for (int k = 0; k < graph -> num_nodes; ++k) {
+    for (int k = 0; k < m; ++k) {
         vector<int> vect;
         vect.clear();
         vect.push_back(-1);
@@ -212,3 +210,59 @@ double compute_cost(Graph *graph, const vector<Edge> sequence, const vector<int>
 	return cost;
 }
 
+// Greedy constructive heuristics
+vector<Edge> greedy_constructive_heuristic(Graph *graph) {
+	// Information
+	const int num_nodes = graph -> num_nodes;
+	const int num_edges = graph -> num_edges;
+		
+	vector<Edge> edges;
+	edges.clear();
+	for (int k = 0; k < num_edges; ++k) {
+		edges.push_back(Edge(graph -> edges[k]));
+	}
+
+	// Sort the list of edges
+	sort(edges.begin(), edges.end());
+
+	// Result
+	vector<Edge> sigma_star;
+	sigma_star.clear();
+
+	// Algorithm
+	for (int i = 0; i < num_edges; ++i) {
+		double z_min = INF;
+		vector<Edge> best;
+
+		// The i-th edge
+		Edge e = Edge(edges[i]);
+
+		for (int j = 0; j <= i; ++j) {
+			// Create another list of edges by adding the i-th edge into the j-th position of sigma_star
+			vector<Edge> sigma;
+			sigma.clear();
+			for (int k = 0; k < j; ++k) {
+				sigma.push_back(Edge(sigma_star[k]));
+			}
+			sigma.push_back(e);
+			for (int k = j + 1; k <= i; ++k) {
+				sigma.push_back(Edge(sigma_star[k - 1]));
+			}
+
+			// Dynamic programming
+			pair< vector< vector<double> >, vector<int> > dp = dynamic_programming(graph, sigma);
+
+			// Update
+			const double z = dp.first[0][0];
+			if (z < z_min) {
+				z_min = z;
+				best = sigma;
+			}
+		}
+
+		// Update sigma_star
+		sigma_star = best;
+	}
+
+	return sigma_star;
+}

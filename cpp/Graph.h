@@ -10,17 +10,35 @@
 #include <cmath>
 #include <vector>
 #include <thread>
+#include <algorithm>
 #include <assert.h>
 
 using namespace std;
 
+// Infinity
+const double INF = 1e9;
+
 // Edge structure
 struct Edge {
+	Edge(const Edge& another) {
+		first = another.first;
+		second = another.second;
+		d = another.d;
+		q = another.q;
+	}
+
 	Edge(const int first_, const int second_, const double d_, const double q_) {
 		first = first_;
 		second = second_;
 		d = d_;
 		q = q_;
+	}
+
+	bool operator < (const Edge& another) {
+		if (this -> d * this -> q > another.d * another.q) {
+			return true;
+		}
+		return false;
 	}
 
 	int first;
@@ -225,8 +243,6 @@ public:
 
 	// Floyd's algorithm to find all-pair shortest paths
 	void Floyd_algorithm() {
-		const double INF = 1e9;
-		
 		this -> shortest_path.clear();
 		for (int i = 0; i < this -> num_nodes; ++i) {
 			vector<double> vect;
