@@ -1,3 +1,7 @@
+# Script for evaluation some test cases of load-dependent Chinese postman problem
+# Author: Dr. Truong Son Hy
+# Copyright 2023
+
 rm -rf test_greedy test_ils test_vns test_brute_force
 g++ test_greedy.cpp -o test_greedy
 g++ test_ils.cpp -o test_ils
