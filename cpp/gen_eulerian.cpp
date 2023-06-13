@@ -173,8 +173,8 @@ int main(int argc, char **argv) {
 	// Fix random seed
 	srand(0);
 
-	const vector<int> V = {7, 10, 20};
-	const vector<int> E = {12, 18, 32};
+	const vector<int> V = {5};
+	const vector<int> E = {8};
 	const vector<double> W_const = {0.0, 0.5, 5.0};
 
 	assert(V.size() == E.size());
@@ -185,10 +185,10 @@ int main(int argc, char **argv) {
 		const int num_edges = E[i];
 		for (int j = 0; j < W_const.size(); ++j) {
 			count++;
-			generate(directory + "/E_" + to_string(count) + ".txt", num_nodes, num_edges, W_const[j], false);
+			generate(directory + "/small_" + to_string(count) + ".txt", num_nodes, num_edges, W_const[j], false);
 
 			count++;
-			generate(directory + "/E_" + to_string(count) + ".txt", num_nodes, num_edges, W_const[j], true);
+			generate(directory + "/small_" + to_string(count) + ".txt", num_nodes, num_edges, W_const[j], true);
 		}
 	}
 	return 0;

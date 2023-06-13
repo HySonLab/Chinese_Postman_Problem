@@ -20,13 +20,15 @@ using namespace std;
 
 // Main program
 int main(int argc, char **argv) {
-    // Load the input graph
-    Graph *graph = new Graph("data/sample_input_2.txt");
+    cout << "File name:" << argv[1] << endl;
+
+	// Load the input graph
+    Graph *graph = new Graph(argv[1]);
 
     // Run the Floyd's algorithm
     graph -> Floyd_algorithm();
 
-    cout << "All-pair shortest paths:\n" << to_str(graph -> shortest_path) << endl;
+    // cout << "All-pair shortest paths:\n" << to_str(graph -> shortest_path) << endl;
 
 	// Variable Neighborhood Search
 	pair< vector<Edge>, double> result = Variable_Neighborhood_Search(graph);

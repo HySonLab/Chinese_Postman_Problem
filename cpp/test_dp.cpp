@@ -14,7 +14,6 @@
 #include <assert.h>
 
 #include "Graph.h"
-#include "meta_heuristics.cpp"
 
 using namespace std;
 

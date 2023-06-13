@@ -30,3 +30,11 @@ Test the Variable Neighborhood Search:
 
 ```test_vns.cpp```
 
+Test the Brute-Force / Back-Tracking:
+
+```test_brute_force.cpp```
+
+Example (script) of running all the baselines:
+
+```test_all_baselines.sh```
+
