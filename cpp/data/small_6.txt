@@ -1,0 +1,21 @@
+Number of nodes:
+5
+Number of edges:
+8
+W:
+2085
+Edges (node i, node j, d_ij, q_ij):
+4 3 6.40312 57
+3 1 6.32456 44
+1 0 10.7703 92
+0 2 2 28
+2 4 1 66
+4 1 10.4403 60
+1 2 10.198 37
+2 4 1 33
+Coordinates:
+10 3
+0 7
+10 5
+6 9
+10 4
