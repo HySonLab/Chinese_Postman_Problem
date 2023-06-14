@@ -13,7 +13,7 @@
 #include <thread>
 #include <assert.h>
 
-#include "brute_force.cpp"
+#include "brute_force.h"
 
 using namespace std;
 

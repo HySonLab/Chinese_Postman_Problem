@@ -233,7 +233,7 @@ pair< vector<Edge>, double> Method_2_EXCHANGE(Graph *graph, const vector<Edge> s
 // +--------------------------------------------+
 pair< vector<Edge>, double> Iterated_Local_Search(Graph *graph, const int k_max = 100) {
 	// Greedy constructive heuristic
-	pair< vector<Edge>, double > greedy  = Greedy_Constructive_Heuristic(graph);
+	pair< vector<Edge>, double > greedy = Greedy_Constructive_Heuristic(graph);
 	vector<Edge> sigma_star = greedy.first;
 	double best = greedy.second;
 
@@ -277,7 +277,7 @@ pair< vector<Edge>, double> Iterated_Local_Search(Graph *graph, const int k_max 
 // +---------------------------------------------------+
 pair< vector<Edge>, double> Variable_Neighborhood_Search(Graph *graph, const int k_max = 100) {
     // Greedy constructive heuristic
-    pair< vector<Edge>, double > greedy  = Greedy_Constructive_Heuristic(graph);
+    pair< vector<Edge>, double > greedy = Greedy_Constructive_Heuristic(graph);
     vector<Edge> sigma_star = greedy.first;
     double best = greedy.second;
 

@@ -173,8 +173,8 @@ int main(int argc, char **argv) {
 	// Fix random seed
 	srand(0);
 
-	const vector<int> V = {20};
-	const vector<int> E = {75};
+	const vector<int> V = {20, 30};
+	const vector<int> E = {75, 100};
 	const vector<double> W_const = {0.0, 0.5, 5.0};
 
 	assert(V.size() == E.size());

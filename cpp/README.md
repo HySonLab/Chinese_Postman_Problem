@@ -6,7 +6,9 @@
 
 * Graph object's implementation: ```Graph.h```
 
-* Meta-heuristics' implementation: ```meta_heuristics.cpp```
+* Meta-heuristics' implementation: ```meta_heuristics.h```
+
+* Brute-Force / Back-Tracking's implementation: ```brute_force.h```
 
 * Example of how to load / save graph from / to file, use the object and run the Floyd's algorithm: ```test_graph.cpp```
 

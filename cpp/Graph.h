@@ -489,8 +489,11 @@ double compute_cost(Graph *graph, const vector<Edge> sequence, const vector<int>
 	// Compute cost
 	double cost = 0;
 	
+	// Start node
+	const int start_node = graph -> start_node;
+
 	// Previous node
-	int prev = 0;
+	int prev = start_node;
 
 	for (int k = 0; k < sequence.size(); ++k) {
 		// Current edge's information
@@ -509,9 +512,9 @@ double compute_cost(Graph *graph, const vector<Edge> sequence, const vector<int>
 		// Last edge
 		if (k == m - 1) {
 			if (direction[k] == 0) {
-                cost += W * graph -> shortest_path[j][0];
+                cost += W * graph -> shortest_path[j][start_node];
             } else {
-                cost += W * graph -> shortest_path[i][0];
+                cost += W * graph -> shortest_path[i][start_node];
             }
 		}
 
