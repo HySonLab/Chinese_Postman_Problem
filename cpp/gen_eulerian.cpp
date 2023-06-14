@@ -92,26 +92,46 @@ void generate(
 		const int last_node = path[path.size() - 1];
 		while (true) {
 			const int next_node = rand() % num_nodes;
-			bool found = false;
+			bool duplicate = false;
 			if (next_node == last_node) {
 				continue;
 			}
-			if (i == num_edges - num_nodes - 1) {
+			
+			if (i == num_edges - num_nodes - 2) {
 				if (next_node == start_node) {
 					continue;
 				}
 			}
+
+			if (i == num_edges - num_nodes - 1) {
+				if (next_node == start_node) {
+					continue;
+				}
+
+				for (int j = 0; j < edges.size(); ++j) {
+                	if ((next_node == edges[j].first) && (start_node == edges[j].second)) {
+                    	duplicate = true;
+                    	break;
+               		}
+                	if ((next_node == edges[j].second) && (start_node == edges[j].first)) {
+                    	duplicate = true;
+                    	break;
+                	}
+            	}
+			}
+			
 			for (int j = 0; j < edges.size(); ++j) {
 				if ((last_node == edges[j].first) && (next_node == edges[j].second)) {
-					found = true;
+					duplicate = true;
 					break;
 				}
 				if ((last_node == edges[j].second) && (next_node == edges[j].first)) {
-                    found = true;
+                    duplicate = true;
                     break;
                 }
 			}
-			if (!found) {
+
+			if (!duplicate) {
 				path.push_back(next_node);
 				edges.push_back(make_pair(last_node, next_node));
 				break;
@@ -173,8 +193,8 @@ int main(int argc, char **argv) {
 	// Fix random seed
 	srand(0);
 
-	const vector<int> V = {20, 30};
-	const vector<int> E = {75, 100};
+	const vector<int> V = {7, 7, 8};
+	const vector<int> E = {8, 9, 10};
 	const vector<double> W_const = {0.0, 0.5, 5.0};
 
 	assert(V.size() == E.size());
@@ -185,10 +205,10 @@ int main(int argc, char **argv) {
 		const int num_edges = E[i];
 		for (int j = 0; j < W_const.size(); ++j) {
 			count++;
-			generate(directory + "/middle_" + to_string(count) + ".txt", num_nodes, num_edges, W_const[j], false);
+			generate(directory + "/small_" + to_string(count) + ".txt", num_nodes, num_edges, W_const[j], false);
 
 			count++;
-			generate(directory + "/middle_" + to_string(count) + ".txt", num_nodes, num_edges, W_const[j], true);
+			generate(directory + "/small_" + to_string(count) + ".txt", num_nodes, num_edges, W_const[j], true);
 		}
 	}
 	return 0;
