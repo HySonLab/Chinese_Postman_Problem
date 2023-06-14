@@ -17,13 +17,20 @@
 #include "meta_heuristics.h"
 
 using namespace std;
+using namespace std::chrono;
 
 // Main program
 int main(int argc, char **argv) {
-	cout << "File name:" << argv[1] << endl;
+	// Starting timepoint
+    auto start = high_resolution_clock::now();
+
+	cout << "File name: " << argv[1] << endl;
 
     // Load the input graph
     Graph *graph = new Graph(argv[1]);
+
+	cout << "Number of nodes: " << graph -> num_nodes << endl;
+	cout << "Number of edges: " << graph -> num_edges << endl;
 
     // Run the Floyd's algorithm
     graph -> Floyd_algorithm();
@@ -38,8 +45,16 @@ int main(int argc, char **argv) {
 	// Dynamic programming
 	pair< vector< vector<double> >, vector<int> > dp = dynamic_programming(graph, sigma);
 
-	cout << "Cost (greedy constructive heuristics): " << dp.first[0][0] << endl;
+	cout << "Cost (Greedy Constructive Heuristics): " << dp.first[0][0] << endl;
 	assert(abs(cost - dp.first[0][0]) < 1e-6);
+
+	// Ending timepoint
+	auto stop = high_resolution_clock::now();
+	
+	// Duration
+	auto duration = duration_cast<seconds>(stop - start);
+
+	cout << "Running time (seconds): " << duration.count() << endl << endl;
 
 	return 0;
 }
