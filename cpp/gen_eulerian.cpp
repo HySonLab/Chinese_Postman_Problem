@@ -193,9 +193,19 @@ int main(int argc, char **argv) {
 	// Fix random seed
 	srand(0);
 
+	// Small cases
+	/*
 	const vector<int> V = {7, 7, 8};
 	const vector<int> E = {8, 9, 10};
 	const vector<double> W_const = {0.0, 0.5, 5.0};
+	const string prefix = "small";
+	*/
+
+	// Eulerian cases
+	const vector<int> V = {7, 10, 20};
+    const vector<int> E = {12, 18, 32};
+    const vector<double> W_const = {0.0, 0.5, 5.0};
+    const string prefix = "E";
 
 	assert(V.size() == E.size());
 	int count = 0;
@@ -205,10 +215,10 @@ int main(int argc, char **argv) {
 		const int num_edges = E[i];
 		for (int j = 0; j < W_const.size(); ++j) {
 			count++;
-			generate(directory + "/small_" + to_string(count) + ".txt", num_nodes, num_edges, W_const[j], false);
+			generate(directory + "/" + prefix + "_" + to_string(count) + ".txt", num_nodes, num_edges, W_const[j], false);
 
 			count++;
-			generate(directory + "/small_" + to_string(count) + ".txt", num_nodes, num_edges, W_const[j], true);
+			generate(directory + "/" + prefix + "_" + to_string(count) + ".txt", num_nodes, num_edges, W_const[j], true);
 		}
 	}
 	return 0;
