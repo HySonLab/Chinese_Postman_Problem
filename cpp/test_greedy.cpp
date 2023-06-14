@@ -52,9 +52,10 @@ int main(int argc, char **argv) {
 	auto stop = high_resolution_clock::now();
 	
 	// Duration
+	auto ms_duration = duration_cast<microseconds>(stop - start);
+	cout << "Running time (microseconds): " << ms_duration.count() << endl;
 	auto duration = duration_cast<seconds>(stop - start);
-
-	cout << "Running time (seconds): " << duration.count() << endl << endl;
+    cout << "Running time (seconds): " << duration.count() << endl << endl;
 
 	return 0;
 }
