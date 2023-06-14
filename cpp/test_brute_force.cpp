@@ -51,8 +51,9 @@ int main(int argc, char **argv) {
     auto stop = high_resolution_clock::now();
 
     // Duration
+	auto ms_duration = duration_cast<milliseconds>(stop - start);
+    cout << "Running time (milliseconds): " << ms_duration.count() << endl;
     auto duration = duration_cast<seconds>(stop - start);
-
     cout << "Running time (seconds): " << duration.count() << endl << endl;
 
 	return 0;
