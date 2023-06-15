@@ -1,0 +1,524 @@
+File name: data/E_1.txt
+Number of nodes: 7
+Number of edges: 12
+Cost (Greedy Constructive Heuristics): 3001.44
+Running time (milliseconds): 1
+Running time (seconds): 0
+
+File name: data/E_1.txt
+Number of nodes: 7
+Number of edges: 12
+Cost (Iterated Local Search): 2574.37
+Running time (milliseconds): 646
+Running time (seconds): 0
+
+File name: data/E_1.txt
+Number of nodes: 7
+Number of edges: 12
+Cost (Variable Neighborhood Search): 2574.37
+Running time (milliseconds): 186
+Running time (seconds): 0
+
+File name: data/E_1.txt
+Number of nodes: 7
+Number of edges: 12
+Cost (Evolutionary Algorithm): 2574.37
+Running time (milliseconds): 6456
+Running time (seconds): 6
+
+-------------------------------------------------------
+File name: data/E_2.txt
+Number of nodes: 7
+Number of edges: 12
+Cost (Greedy Constructive Heuristics): 17494.2
+Running time (milliseconds): 1
+Running time (seconds): 0
+
+File name: data/E_2.txt
+Number of nodes: 7
+Number of edges: 12
+Cost (Iterated Local Search): 15599.1
+Running time (milliseconds): 646
+Running time (seconds): 0
+
+File name: data/E_2.txt
+Number of nodes: 7
+Number of edges: 12
+Cost (Variable Neighborhood Search): 15599.1
+Running time (milliseconds): 183
+Running time (seconds): 0
+
+File name: data/E_2.txt
+Number of nodes: 7
+Number of edges: 12
+Cost (Evolutionary Algorithm): 14589.2
+Running time (milliseconds): 6688
+Running time (seconds): 6
+
+-------------------------------------------------------
+File name: data/E_3.txt
+Number of nodes: 7
+Number of edges: 12
+Cost (Greedy Constructive Heuristics): 4616.5
+Running time (milliseconds): 1
+Running time (seconds): 0
+
+File name: data/E_3.txt
+Number of nodes: 7
+Number of edges: 12
+Cost (Iterated Local Search): 4616.5
+Running time (milliseconds): 626
+Running time (seconds): 0
+
+File name: data/E_3.txt
+Number of nodes: 7
+Number of edges: 12
+Cost (Variable Neighborhood Search): 4616.5
+Running time (milliseconds): 189
+Running time (seconds): 0
+
+File name: data/E_3.txt
+Number of nodes: 7
+Number of edges: 12
+Cost (Evolutionary Algorithm): 4616.5
+Running time (milliseconds): 6675
+Running time (seconds): 6
+
+-------------------------------------------------------
+File name: data/E_4.txt
+Number of nodes: 7
+Number of edges: 12
+Cost (Greedy Constructive Heuristics): 29314.9
+Running time (milliseconds): 1
+Running time (seconds): 0
+
+File name: data/E_4.txt
+Number of nodes: 7
+Number of edges: 12
+Cost (Iterated Local Search): 26886.9
+Running time (milliseconds): 630
+Running time (seconds): 0
+
+File name: data/E_4.txt
+Number of nodes: 7
+Number of edges: 12
+Cost (Variable Neighborhood Search): 26886.9
+Running time (milliseconds): 175
+Running time (seconds): 0
+
+File name: data/E_4.txt
+Number of nodes: 7
+Number of edges: 12
+Cost (Evolutionary Algorithm): 26886.9
+Running time (milliseconds): 6514
+Running time (seconds): 6
+
+-------------------------------------------------------
+File name: data/E_5.txt
+Number of nodes: 7
+Number of edges: 12
+Cost (Greedy Constructive Heuristics): 25636.6
+Running time (milliseconds): 1
+Running time (seconds): 0
+
+File name: data/E_5.txt
+Number of nodes: 7
+Number of edges: 12
+Cost (Iterated Local Search): 25636.6
+Running time (milliseconds): 649
+Running time (seconds): 0
+
+File name: data/E_5.txt
+Number of nodes: 7
+Number of edges: 12
+Cost (Variable Neighborhood Search): 25636.6
+Running time (milliseconds): 200
+Running time (seconds): 0
+
+File name: data/E_5.txt
+Number of nodes: 7
+Number of edges: 12
+Cost (Evolutionary Algorithm): 25636.6
+Running time (milliseconds): 6506
+Running time (seconds): 6
+
+-------------------------------------------------------
+File name: data/E_6.txt
+Number of nodes: 7
+Number of edges: 12
+Cost (Greedy Constructive Heuristics): 284042
+Running time (milliseconds): 1
+Running time (seconds): 0
+
+File name: data/E_6.txt
+Number of nodes: 7
+Number of edges: 12
+Cost (Iterated Local Search): 278420
+Running time (milliseconds): 648
+Running time (seconds): 0
+
+File name: data/E_6.txt
+Number of nodes: 7
+Number of edges: 12
+Cost (Variable Neighborhood Search): 278050
+Running time (milliseconds): 172
+Running time (seconds): 0
+
+File name: data/E_6.txt
+Number of nodes: 7
+Number of edges: 12
+Cost (Evolutionary Algorithm): 278050
+Running time (milliseconds): 6592
+Running time (seconds): 6
+
+-------------------------------------------------------
+File name: data/E_7.txt
+Number of nodes: 10
+Number of edges: 18
+Cost (Greedy Constructive Heuristics): 4760.13
+Running time (milliseconds): 4
+Running time (seconds): 0
+
+File name: data/E_7.txt
+Number of nodes: 10
+Number of edges: 18
+Cost (Iterated Local Search): 4719.23
+Running time (milliseconds): 2177
+Running time (seconds): 2
+
+File name: data/E_7.txt
+Number of nodes: 10
+Number of edges: 18
+Cost (Variable Neighborhood Search): 4719.23
+Running time (milliseconds): 551
+Running time (seconds): 0
+
+File name: data/E_7.txt
+Number of nodes: 10
+Number of edges: 18
+Cost (Evolutionary Algorithm): 4719.23
+Running time (milliseconds): 21883
+Running time (seconds): 21
+
+-------------------------------------------------------
+File name: data/E_8.txt
+Number of nodes: 10
+Number of edges: 18
+Cost (Greedy Constructive Heuristics): 40626.9
+Running time (milliseconds): 4
+Running time (seconds): 0
+
+File name: data/E_8.txt
+Number of nodes: 10
+Number of edges: 18
+Cost (Iterated Local Search): 37098.9
+Running time (milliseconds): 2138
+Running time (seconds): 2
+
+File name: data/E_8.txt
+Number of nodes: 10
+Number of edges: 18
+Cost (Variable Neighborhood Search): 37098.9
+Running time (milliseconds): 577
+Running time (seconds): 0
+
+File name: data/E_8.txt
+Number of nodes: 10
+Number of edges: 18
+Cost (Evolutionary Algorithm): 37098.9
+Running time (milliseconds): 21548
+Running time (seconds): 21
+
+-------------------------------------------------------
+File name: data/E_9.txt
+Number of nodes: 10
+Number of edges: 18
+Cost (Greedy Constructive Heuristics): 8909.54
+Running time (milliseconds): 4
+Running time (seconds): 0
+
+File name: data/E_9.txt
+Number of nodes: 10
+Number of edges: 18
+Cost (Iterated Local Search): 8780.69
+Running time (milliseconds): 2192
+Running time (seconds): 2
+
+File name: data/E_9.txt
+Number of nodes: 10
+Number of edges: 18
+Cost (Variable Neighborhood Search): 8780.69
+Running time (milliseconds): 572
+Running time (seconds): 0
+
+File name: data/E_9.txt
+Number of nodes: 10
+Number of edges: 18
+Cost (Evolutionary Algorithm): 8780.69
+Running time (milliseconds): 22165
+Running time (seconds): 22
+
+-------------------------------------------------------
+File name: data/E_10.txt
+Number of nodes: 10
+Number of edges: 18
+Cost (Greedy Constructive Heuristics): 130968
+Running time (milliseconds): 4
+Running time (seconds): 0
+
+File name: data/E_10.txt
+Number of nodes: 10
+Number of edges: 18
+Cost (Iterated Local Search): 119829
+Running time (milliseconds): 2251
+Running time (seconds): 2
+
+File name: data/E_10.txt
+Number of nodes: 10
+Number of edges: 18
+Cost (Variable Neighborhood Search): 119829
+Running time (milliseconds): 611
+Running time (seconds): 0
+
+File name: data/E_10.txt
+Number of nodes: 10
+Number of edges: 18
+Cost (Evolutionary Algorithm): 118760
+Running time (milliseconds): 23335
+Running time (seconds): 23
+
+-------------------------------------------------------
+File name: data/E_11.txt
+Number of nodes: 10
+Number of edges: 18
+Cost (Greedy Constructive Heuristics): 57945.7
+Running time (milliseconds): 4
+Running time (seconds): 0
+
+File name: data/E_11.txt
+Number of nodes: 10
+Number of edges: 18
+Cost (Iterated Local Search): 57945.7
+Running time (milliseconds): 2417
+Running time (seconds): 2
+
+File name: data/E_11.txt
+Number of nodes: 10
+Number of edges: 18
+Cost (Variable Neighborhood Search): 57945.7
+Running time (milliseconds): 634
+Running time (seconds): 0
+
+File name: data/E_11.txt
+Number of nodes: 10
+Number of edges: 18
+Cost (Evolutionary Algorithm): 57945.7
+Running time (milliseconds): 24849
+Running time (seconds): 24
+
+-------------------------------------------------------
+File name: data/E_12.txt
+Number of nodes: 10
+Number of edges: 18
+Cost (Greedy Constructive Heuristics): 576867
+Running time (milliseconds): 4
+Running time (seconds): 0
+
+File name: data/E_12.txt
+Number of nodes: 10
+Number of edges: 18
+Cost (Iterated Local Search): 526928
+Running time (milliseconds): 2291
+Running time (seconds): 2
+
+File name: data/E_12.txt
+Number of nodes: 10
+Number of edges: 18
+Cost (Variable Neighborhood Search): 528224
+Running time (milliseconds): 561
+Running time (seconds): 0
+
+File name: data/E_12.txt
+Number of nodes: 10
+Number of edges: 18
+Cost (Evolutionary Algorithm): 526079
+Running time (milliseconds): 23951
+Running time (seconds): 23
+
+-------------------------------------------------------
+File name: data/E_13.txt
+Number of nodes: 20
+Number of edges: 32
+Cost (Greedy Constructive Heuristics): 17727.9
+Running time (milliseconds): 21
+Running time (seconds): 0
+
+File name: data/E_13.txt
+Number of nodes: 20
+Number of edges: 32
+Cost (Iterated Local Search): 17727.9
+Running time (milliseconds): 11216
+Running time (seconds): 11
+
+File name: data/E_13.txt
+Number of nodes: 20
+Number of edges: 32
+Cost (Variable Neighborhood Search): 17727.9
+Running time (milliseconds): 2932
+Running time (seconds): 2
+
+File name: data/E_13.txt
+Number of nodes: 20
+Number of edges: 32
+Cost (Evolutionary Algorithm): 17727.9
+Running time (milliseconds): 117784
+Running time (seconds): 117
+
+-------------------------------------------------------
+File name: data/E_14.txt
+Number of nodes: 20
+Number of edges: 32
+Cost (Greedy Constructive Heuristics): 117500
+Running time (milliseconds): 20
+Running time (seconds): 0
+
+File name: data/E_14.txt
+Number of nodes: 20
+Number of edges: 32
+Cost (Iterated Local Search): 117500
+Running time (milliseconds): 11439
+Running time (seconds): 11
+
+File name: data/E_14.txt
+Number of nodes: 20
+Number of edges: 32
+Cost (Variable Neighborhood Search): 117500
+Running time (milliseconds): 2600
+Running time (seconds): 2
+
+File name: data/E_14.txt
+Number of nodes: 20
+Number of edges: 32
+Cost (Evolutionary Algorithm): 94807.1
+Running time (milliseconds): 105692
+Running time (seconds): 105
+
+-------------------------------------------------------
+File name: data/E_15.txt
+Number of nodes: 20
+Number of edges: 32
+Cost (Greedy Constructive Heuristics): 41872.6
+Running time (milliseconds): 20
+Running time (seconds): 0
+
+File name: data/E_15.txt
+Number of nodes: 20
+Number of edges: 32
+Cost (Iterated Local Search): 41872.6
+Running time (milliseconds): 10790
+Running time (seconds): 10
+
+File name: data/E_15.txt
+Number of nodes: 20
+Number of edges: 32
+Cost (Variable Neighborhood Search): 41872.6
+Running time (milliseconds): 2675
+Running time (seconds): 2
+
+File name: data/E_15.txt
+Number of nodes: 20
+Number of edges: 32
+Cost (Evolutionary Algorithm): 41532.2
+Running time (milliseconds): 107027
+Running time (seconds): 107
+
+-------------------------------------------------------
+File name: data/E_16.txt
+Number of nodes: 20
+Number of edges: 32
+Cost (Greedy Constructive Heuristics): 308377
+Running time (milliseconds): 20
+Running time (seconds): 0
+
+File name: data/E_16.txt
+Number of nodes: 20
+Number of edges: 32
+Cost (Iterated Local Search): 308377
+Running time (milliseconds): 10584
+Running time (seconds): 10
+
+File name: data/E_16.txt
+Number of nodes: 20
+Number of edges: 32
+Cost (Variable Neighborhood Search): 308377
+Running time (milliseconds): 2791
+Running time (seconds): 2
+
+File name: data/E_16.txt
+Number of nodes: 20
+Number of edges: 32
+Cost (Evolutionary Algorithm): 287385
+Running time (milliseconds): 112937
+Running time (seconds): 112
+
+-------------------------------------------------------
+File name: data/E_17.txt
+Number of nodes: 20
+Number of edges: 32
+Cost (Greedy Constructive Heuristics): 227804
+Running time (milliseconds): 24
+Running time (seconds): 0
+
+File name: data/E_17.txt
+Number of nodes: 20
+Number of edges: 32
+Cost (Iterated Local Search): 227804
+Running time (milliseconds): 11643
+Running time (seconds): 11
+
+File name: data/E_17.txt
+Number of nodes: 20
+Number of edges: 32
+Cost (Variable Neighborhood Search): 227804
+Running time (milliseconds): 2719
+Running time (seconds): 2
+
+File name: data/E_17.txt
+Number of nodes: 20
+Number of edges: 32
+Cost (Evolutionary Algorithm): 187777
+Running time (milliseconds): 121003
+Running time (seconds): 121
+
+-------------------------------------------------------
+File name: data/E_18.txt
+Number of nodes: 20
+Number of edges: 32
+Cost (Greedy Constructive Heuristics): 2.09765e+06
+Running time (milliseconds): 21
+Running time (seconds): 0
+
+File name: data/E_18.txt
+Number of nodes: 20
+Number of edges: 32
+Cost (Iterated Local Search): 2.06543e+06
+Running time (milliseconds): 11608
+Running time (seconds): 11
+
+File name: data/E_18.txt
+Number of nodes: 20
+Number of edges: 32
+Cost (Variable Neighborhood Search): 2.07081e+06
+Running time (milliseconds): 2882
+Running time (seconds): 2
+
+File name: data/E_18.txt
+Number of nodes: 20
+Number of edges: 32
+Cost (Evolutionary Algorithm): 1.66952e+06
+Running time (milliseconds): 118943
+Running time (seconds): 118
+
+-------------------------------------------------------
+Done all baselines
+

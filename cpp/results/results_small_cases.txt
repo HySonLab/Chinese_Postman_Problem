@@ -1,0 +1,722 @@
+File name: data/sample_input_1.txt
+Number of nodes: 4
+Number of edges: 4
+Cost (Greedy Constructive Heuristics): 816
+Running time (milliseconds): 0
+Running time (seconds): 0
+
+File name: data/sample_input_1.txt
+Number of nodes: 4
+Number of edges: 4
+Cost (Iterated Local Search): 816
+Running time (milliseconds): 23
+Running time (seconds): 0
+
+File name: data/sample_input_1.txt
+Number of nodes: 4
+Number of edges: 4
+Cost (Variable Neighborhood Search): 816
+Running time (milliseconds): 16
+Running time (seconds): 0
+
+File name: data/sample_input_1.txt
+Number of nodes: 4
+Number of edges: 4
+Cost (Evolutionary Algorithm): 816
+Running time (milliseconds): 261
+Running time (seconds): 0
+
+File name: data/sample_input_1.txt
+Number of nodes: 4
+Number of edges: 4
+Cost (Brute-Force): 816
+Running time (milliseconds): 0
+Running time (seconds): 0
+
+-------------------------------------------------------
+File name: data/sample_input_2.txt
+Number of nodes: 4
+Number of edges: 4
+Cost (Greedy Constructive Heuristics): 62720
+Running time (milliseconds): 0
+Running time (seconds): 0
+
+File name: data/sample_input_2.txt
+Number of nodes: 4
+Number of edges: 4
+Cost (Iterated Local Search): 62720
+Running time (milliseconds): 23
+Running time (seconds): 0
+
+File name: data/sample_input_2.txt
+Number of nodes: 4
+Number of edges: 4
+Cost (Variable Neighborhood Search): 62720
+Running time (milliseconds): 16
+Running time (seconds): 0
+
+File name: data/sample_input_2.txt
+Number of nodes: 4
+Number of edges: 4
+Cost (Evolutionary Algorithm): 62720
+Running time (milliseconds): 252
+Running time (seconds): 0
+
+File name: data/sample_input_2.txt
+Number of nodes: 4
+Number of edges: 4
+Cost (Brute-Force): 62720
+Running time (milliseconds): 0
+Running time (seconds): 0
+
+-------------------------------------------------------
+File name: data/small_1.txt
+Number of nodes: 7
+Number of edges: 8
+Cost (Greedy Constructive Heuristics): 1130.41
+Running time (milliseconds): 0
+Running time (seconds): 0
+
+File name: data/small_1.txt
+Number of nodes: 7
+Number of edges: 8
+Cost (Iterated Local Search): 1130.41
+Running time (milliseconds): 181
+Running time (seconds): 0
+
+File name: data/small_1.txt
+Number of nodes: 7
+Number of edges: 8
+Cost (Variable Neighborhood Search): 1130.41
+Running time (milliseconds): 75
+Running time (seconds): 0
+
+File name: data/small_1.txt
+Number of nodes: 7
+Number of edges: 8
+Cost (Evolutionary Algorithm): 1130.41
+Running time (milliseconds): 1804
+Running time (seconds): 1
+
+File name: data/small_1.txt
+Number of nodes: 7
+Number of edges: 8
+Cost (Brute-Force): 1130.41
+Running time (milliseconds): 608
+Running time (seconds): 0
+
+-------------------------------------------------------
+File name: data/small_2.txt
+Number of nodes: 7
+Number of edges: 8
+Cost (Greedy Constructive Heuristics): 13004.3
+Running time (milliseconds): 0
+Running time (seconds): 0
+
+File name: data/small_2.txt
+Number of nodes: 7
+Number of edges: 8
+Cost (Iterated Local Search): 10969.9
+Running time (milliseconds): 181
+Running time (seconds): 0
+
+File name: data/small_2.txt
+Number of nodes: 7
+Number of edges: 8
+Cost (Variable Neighborhood Search): 10969.9
+Running time (milliseconds): 114
+Running time (seconds): 0
+
+File name: data/small_2.txt
+Number of nodes: 7
+Number of edges: 8
+Cost (Evolutionary Algorithm): 10969.9
+Running time (milliseconds): 1832
+Running time (seconds): 1
+
+File name: data/small_2.txt
+Number of nodes: 7
+Number of edges: 8
+Cost (Brute-Force): 10969.9
+Running time (milliseconds): 602
+Running time (seconds): 0
+
+-------------------------------------------------------
+File name: data/small_3.txt
+Number of nodes: 7
+Number of edges: 8
+Cost (Greedy Constructive Heuristics): 883.931
+Running time (milliseconds): 0
+Running time (seconds): 0
+
+File name: data/small_3.txt
+Number of nodes: 7
+Number of edges: 8
+Cost (Iterated Local Search): 883.931
+Running time (milliseconds): 181
+Running time (seconds): 0
+
+File name: data/small_3.txt
+Number of nodes: 7
+Number of edges: 8
+Cost (Variable Neighborhood Search): 883.931
+Running time (milliseconds): 76
+Running time (seconds): 0
+
+File name: data/small_3.txt
+Number of nodes: 7
+Number of edges: 8
+Cost (Evolutionary Algorithm): 883.931
+Running time (milliseconds): 1814
+Running time (seconds): 1
+
+File name: data/small_3.txt
+Number of nodes: 7
+Number of edges: 8
+Cost (Brute-Force): 883.931
+Running time (milliseconds): 802
+Running time (seconds): 0
+
+-------------------------------------------------------
+File name: data/small_4.txt
+Number of nodes: 7
+Number of edges: 8
+Cost (Greedy Constructive Heuristics): 21224.1
+Running time (milliseconds): 0
+Running time (seconds): 0
+
+File name: data/small_4.txt
+Number of nodes: 7
+Number of edges: 8
+Cost (Iterated Local Search): 21096.6
+Running time (milliseconds): 227
+Running time (seconds): 0
+
+File name: data/small_4.txt
+Number of nodes: 7
+Number of edges: 8
+Cost (Variable Neighborhood Search): 21096.6
+Running time (milliseconds): 86
+Running time (seconds): 0
+
+File name: data/small_4.txt
+Number of nodes: 7
+Number of edges: 8
+Cost (Evolutionary Algorithm): 21096.6
+Running time (milliseconds): 2005
+Running time (seconds): 2
+
+File name: data/small_4.txt
+Number of nodes: 7
+Number of edges: 8
+Cost (Brute-Force): 21096.6
+Running time (milliseconds): 611
+Running time (seconds): 0
+
+-------------------------------------------------------
+File name: data/small_5.txt
+Number of nodes: 7
+Number of edges: 8
+Cost (Greedy Constructive Heuristics): 11390.6
+Running time (milliseconds): 0
+Running time (seconds): 0
+
+File name: data/small_5.txt
+Number of nodes: 7
+Number of edges: 8
+Cost (Iterated Local Search): 11390.6
+Running time (milliseconds): 182
+Running time (seconds): 0
+
+File name: data/small_5.txt
+Number of nodes: 7
+Number of edges: 8
+Cost (Variable Neighborhood Search): 11390.6
+Running time (milliseconds): 75
+Running time (seconds): 0
+
+File name: data/small_5.txt
+Number of nodes: 7
+Number of edges: 8
+Cost (Evolutionary Algorithm): 11390.6
+Running time (milliseconds): 1819
+Running time (seconds): 1
+
+File name: data/small_5.txt
+Number of nodes: 7
+Number of edges: 8
+Cost (Brute-Force): 11390.6
+Running time (milliseconds): 609
+Running time (seconds): 0
+
+-------------------------------------------------------
+File name: data/small_6.txt
+Number of nodes: 7
+Number of edges: 8
+Cost (Greedy Constructive Heuristics): 146806
+Running time (milliseconds): 0
+Running time (seconds): 0
+
+File name: data/small_6.txt
+Number of nodes: 7
+Number of edges: 8
+Cost (Iterated Local Search): 146806
+Running time (milliseconds): 180
+Running time (seconds): 0
+
+File name: data/small_6.txt
+Number of nodes: 7
+Number of edges: 8
+Cost (Variable Neighborhood Search): 146806
+Running time (milliseconds): 73
+Running time (seconds): 0
+
+File name: data/small_6.txt
+Number of nodes: 7
+Number of edges: 8
+Cost (Evolutionary Algorithm): 146806
+Running time (milliseconds): 1811
+Running time (seconds): 1
+
+File name: data/small_6.txt
+Number of nodes: 7
+Number of edges: 8
+Cost (Brute-Force): 146806
+Running time (milliseconds): 600
+Running time (seconds): 0
+
+-------------------------------------------------------
+File name: data/small_7.txt
+Number of nodes: 7
+Number of edges: 9
+Cost (Greedy Constructive Heuristics): 2245.87
+Running time (milliseconds): 0
+Running time (seconds): 0
+
+File name: data/small_7.txt
+Number of nodes: 7
+Number of edges: 9
+Cost (Iterated Local Search): 1789.02
+Running time (milliseconds): 277
+Running time (seconds): 0
+
+File name: data/small_7.txt
+Number of nodes: 7
+Number of edges: 9
+Cost (Variable Neighborhood Search): 1789.02
+Running time (milliseconds): 95
+Running time (seconds): 0
+
+File name: data/small_7.txt
+Number of nodes: 7
+Number of edges: 9
+Cost (Evolutionary Algorithm): 1789.02
+Running time (milliseconds): 2773
+Running time (seconds): 2
+
+File name: data/small_7.txt
+Number of nodes: 7
+Number of edges: 9
+Cost (Brute-Force): 1789.02
+Running time (milliseconds): 6750
+Running time (seconds): 6
+
+-------------------------------------------------------
+File name: data/small_8.txt
+Number of nodes: 7
+Number of edges: 9
+Cost (Greedy Constructive Heuristics): 9167.69
+Running time (milliseconds): 0
+Running time (seconds): 0
+
+File name: data/small_8.txt
+Number of nodes: 7
+Number of edges: 9
+Cost (Iterated Local Search): 9167.69
+Running time (milliseconds): 278
+Running time (seconds): 0
+
+File name: data/small_8.txt
+Number of nodes: 7
+Number of edges: 9
+Cost (Variable Neighborhood Search): 9167.69
+Running time (milliseconds): 107
+Running time (seconds): 0
+
+File name: data/small_8.txt
+Number of nodes: 7
+Number of edges: 9
+Cost (Evolutionary Algorithm): 9167.69
+Running time (milliseconds): 3020
+Running time (seconds): 3
+
+File name: data/small_8.txt
+Number of nodes: 7
+Number of edges: 9
+Cost (Brute-Force): 9167.69
+Running time (milliseconds): 7236
+Running time (seconds): 7
+
+-------------------------------------------------------
+File name: data/small_9.txt
+Number of nodes: 7
+Number of edges: 9
+Cost (Greedy Constructive Heuristics): 2427.14
+Running time (milliseconds): 0
+Running time (seconds): 0
+
+File name: data/small_9.txt
+Number of nodes: 7
+Number of edges: 9
+Cost (Iterated Local Search): 2427.14
+Running time (milliseconds): 294
+Running time (seconds): 0
+
+File name: data/small_9.txt
+Number of nodes: 7
+Number of edges: 9
+Cost (Variable Neighborhood Search): 2427.14
+Running time (milliseconds): 105
+Running time (seconds): 0
+
+File name: data/small_9.txt
+Number of nodes: 7
+Number of edges: 9
+Cost (Evolutionary Algorithm): 2427.14
+Running time (milliseconds): 2970
+Running time (seconds): 2
+
+File name: data/small_9.txt
+Number of nodes: 7
+Number of edges: 9
+Cost (Brute-Force): 2427.14
+Running time (milliseconds): 7441
+Running time (seconds): 7
+
+-------------------------------------------------------
+File name: data/small_10.txt
+Number of nodes: 7
+Number of edges: 9
+Cost (Greedy Constructive Heuristics): 23535.9
+Running time (milliseconds): 0
+Running time (seconds): 0
+
+File name: data/small_10.txt
+Number of nodes: 7
+Number of edges: 9
+Cost (Iterated Local Search): 22273.7
+Running time (milliseconds): 360
+Running time (seconds): 0
+
+File name: data/small_10.txt
+Number of nodes: 7
+Number of edges: 9
+Cost (Variable Neighborhood Search): 22273.7
+Running time (milliseconds): 94
+Running time (seconds): 0
+
+File name: data/small_10.txt
+Number of nodes: 7
+Number of edges: 9
+Cost (Evolutionary Algorithm): 22273.7
+Running time (milliseconds): 2968
+Running time (seconds): 2
+
+File name: data/small_10.txt
+Number of nodes: 7
+Number of edges: 9
+Cost (Brute-Force): 22273.7
+Running time (milliseconds): 7333
+Running time (seconds): 7
+
+-------------------------------------------------------
+File name: data/small_11.txt
+Number of nodes: 7
+Number of edges: 9
+Cost (Greedy Constructive Heuristics): 13144
+Running time (milliseconds): 0
+Running time (seconds): 0
+
+File name: data/small_11.txt
+Number of nodes: 7
+Number of edges: 9
+Cost (Iterated Local Search): 13144
+Running time (milliseconds): 302
+Running time (seconds): 0
+
+File name: data/small_11.txt
+Number of nodes: 7
+Number of edges: 9
+Cost (Variable Neighborhood Search): 13144
+Running time (milliseconds): 103
+Running time (seconds): 0
+
+File name: data/small_11.txt
+Number of nodes: 7
+Number of edges: 9
+Cost (Evolutionary Algorithm): 13144
+Running time (milliseconds): 2843
+Running time (seconds): 2
+
+File name: data/small_11.txt
+Number of nodes: 7
+Number of edges: 9
+Cost (Brute-Force): 13144
+Running time (milliseconds): 6630
+Running time (seconds): 6
+
+-------------------------------------------------------
+File name: data/small_12.txt
+Number of nodes: 7
+Number of edges: 9
+Cost (Greedy Constructive Heuristics): 94532.3
+Running time (milliseconds): 0
+Running time (seconds): 0
+
+File name: data/small_12.txt
+Number of nodes: 7
+Number of edges: 9
+Cost (Iterated Local Search): 93620.6
+Running time (milliseconds): 278
+Running time (seconds): 0
+
+File name: data/small_12.txt
+Number of nodes: 7
+Number of edges: 9
+Cost (Variable Neighborhood Search): 93620.6
+Running time (milliseconds): 91
+Running time (seconds): 0
+
+File name: data/small_12.txt
+Number of nodes: 7
+Number of edges: 9
+Cost (Evolutionary Algorithm): 93620.6
+Running time (milliseconds): 2782
+Running time (seconds): 2
+
+File name: data/small_12.txt
+Number of nodes: 7
+Number of edges: 9
+Cost (Brute-Force): 93620.6
+Running time (milliseconds): 7858
+Running time (seconds): 7
+
+-------------------------------------------------------
+File name: data/small_13.txt
+Number of nodes: 8
+Number of edges: 10
+Cost (Greedy Constructive Heuristics): 2490.87
+Running time (milliseconds): 0
+Running time (seconds): 0
+
+File name: data/small_13.txt
+Number of nodes: 8
+Number of edges: 10
+Cost (Iterated Local Search): 2490.87
+Running time (milliseconds): 371
+Running time (seconds): 0
+
+File name: data/small_13.txt
+Number of nodes: 8
+Number of edges: 10
+Cost (Variable Neighborhood Search): 2490.87
+Running time (milliseconds): 124
+Running time (seconds): 0
+
+File name: data/small_13.txt
+Number of nodes: 8
+Number of edges: 10
+Cost (Evolutionary Algorithm): 2490.87
+Running time (milliseconds): 3778
+Running time (seconds): 3
+
+File name: data/small_13.txt
+Number of nodes: 8
+Number of edges: 10
+Cost (Brute-Force): 2490.87
+Running time (milliseconds): 78987
+Running time (seconds): 78
+
+-------------------------------------------------------
+File name: data/small_14.txt
+Number of nodes: 8
+Number of edges: 10
+Cost (Greedy Constructive Heuristics): 15774.2
+Running time (milliseconds): 1
+Running time (seconds): 0
+
+File name: data/small_14.txt
+Number of nodes: 8
+Number of edges: 10
+Cost (Iterated Local Search): 13121.6
+Running time (milliseconds): 505
+Running time (seconds): 0
+
+File name: data/small_14.txt
+Number of nodes: 8
+Number of edges: 10
+Cost (Variable Neighborhood Search): 13121.6
+Running time (milliseconds): 130
+Running time (seconds): 0
+
+File name: data/small_14.txt
+Number of nodes: 8
+Number of edges: 10
+Cost (Evolutionary Algorithm): 13121.6
+Running time (milliseconds): 4221
+Running time (seconds): 4
+
+File name: data/small_14.txt
+Number of nodes: 8
+Number of edges: 10
+Cost (Brute-Force): 13121.6
+Running time (milliseconds): 78737
+Running time (seconds): 78
+
+-------------------------------------------------------
+File name: data/small_15.txt
+Number of nodes: 8
+Number of edges: 10
+Cost (Greedy Constructive Heuristics): 4110.82
+Running time (milliseconds): 0
+Running time (seconds): 0
+
+File name: data/small_15.txt
+Number of nodes: 8
+Number of edges: 10
+Cost (Iterated Local Search): 4110.82
+Running time (milliseconds): 398
+Running time (seconds): 0
+
+File name: data/small_15.txt
+Number of nodes: 8
+Number of edges: 10
+Cost (Variable Neighborhood Search): 4110.82
+Running time (milliseconds): 144
+Running time (seconds): 0
+
+File name: data/small_15.txt
+Number of nodes: 8
+Number of edges: 10
+Cost (Evolutionary Algorithm): 4110.82
+Running time (milliseconds): 3823
+Running time (seconds): 3
+
+File name: data/small_15.txt
+Number of nodes: 8
+Number of edges: 10
+Cost (Brute-Force): 4110.82
+Running time (milliseconds): 76434
+Running time (seconds): 76
+
+-------------------------------------------------------
+File name: data/small_16.txt
+Number of nodes: 8
+Number of edges: 10
+Cost (Greedy Constructive Heuristics): 24936
+Running time (milliseconds): 0
+Running time (seconds): 0
+
+File name: data/small_16.txt
+Number of nodes: 8
+Number of edges: 10
+Cost (Iterated Local Search): 24512.4
+Running time (milliseconds): 391
+Running time (seconds): 0
+
+File name: data/small_16.txt
+Number of nodes: 8
+Number of edges: 10
+Cost (Variable Neighborhood Search): 24512.4
+Running time (milliseconds): 120
+Running time (seconds): 0
+
+File name: data/small_16.txt
+Number of nodes: 8
+Number of edges: 10
+Cost (Evolutionary Algorithm): 24512.4
+Running time (milliseconds): 4186
+Running time (seconds): 4
+
+File name: data/small_16.txt
+Number of nodes: 8
+Number of edges: 10
+Cost (Brute-Force): 24512.4
+Running time (milliseconds): 78213
+Running time (seconds): 78
+
+-------------------------------------------------------
+File name: data/small_17.txt
+Number of nodes: 8
+Number of edges: 10
+Cost (Greedy Constructive Heuristics): 17685.5
+Running time (milliseconds): 0
+Running time (seconds): 0
+
+File name: data/small_17.txt
+Number of nodes: 8
+Number of edges: 10
+Cost (Iterated Local Search): 17685.5
+Running time (milliseconds): 396
+Running time (seconds): 0
+
+File name: data/small_17.txt
+Number of nodes: 8
+Number of edges: 10
+Cost (Variable Neighborhood Search): 17685.5
+Running time (milliseconds): 133
+Running time (seconds): 0
+
+File name: data/small_17.txt
+Number of nodes: 8
+Number of edges: 10
+Cost (Evolutionary Algorithm): 17685.5
+Running time (milliseconds): 4136
+Running time (seconds): 4
+
+File name: data/small_17.txt
+Number of nodes: 8
+Number of edges: 10
+Cost (Brute-Force): 17685.5
+Running time (milliseconds): 80333
+Running time (seconds): 80
+
+-------------------------------------------------------
+File name: data/small_18.txt
+Number of nodes: 8
+Number of edges: 10
+Cost (Greedy Constructive Heuristics): 137343
+Running time (milliseconds): 0
+Running time (seconds): 0
+
+File name: data/small_18.txt
+Number of nodes: 8
+Number of edges: 10
+Cost (Iterated Local Search): 137343
+Running time (milliseconds): 375
+Running time (seconds): 0
+
+File name: data/small_18.txt
+Number of nodes: 8
+Number of edges: 10
+Cost (Variable Neighborhood Search): 137343
+Running time (milliseconds): 124
+Running time (seconds): 0
+
+File name: data/small_18.txt
+Number of nodes: 8
+Number of edges: 10
+Cost (Evolutionary Algorithm): 137343
+Running time (milliseconds): 3839
+Running time (seconds): 3
+
+File name: data/small_18.txt
+Number of nodes: 8
+Number of edges: 10
+Cost (Brute-Force): 137343
+Running time (milliseconds): 73212
+Running time (seconds): 73
+
+-------------------------------------------------------
+Done all baselines
+
