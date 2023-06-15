@@ -186,6 +186,7 @@ void generate(
 		file << position[i].first << " " << position[i].second << endl;
 	}
 	file.close();
+	cout << "File " << file_name << ": Number of nodes = " << num_nodes << ". Number of edges = " << num_edges << "." << endl;
 }
 
 // Main program
@@ -201,11 +202,19 @@ int main(int argc, char **argv) {
 	const string prefix = "small";
 	*/
 
+	// Large cases
+    const vector<int> V = {10, 10, 10, 20, 20, 30, 30, 30};
+    const vector<int> E = {16, 20, 27, 53, 75, 110, 162, 232};
+    const vector<double> W_const = {0.0, 0.5, 5.0};
+    const string prefix = "large";
+
 	// Eulerian cases
+	/*
 	const vector<int> V = {7, 10, 20};
     const vector<int> E = {12, 18, 32};
     const vector<double> W_const = {0.0, 0.5, 5.0};
     const string prefix = "E";
+	*/
 
 	assert(V.size() == E.size());
 	int count = 0;
