@@ -138,6 +138,18 @@ public:
 	Graph(){
 	}
 
+	// Filter for the must-deliver edges
+	void filter_must_deliver_edges() {
+		this -> deliver_edges.clear();
+        for (int i = 0; i < this -> edges.size(); ++i) {
+            if (this -> edges[i].q > 0.0) {
+                this -> deliver_edges.push_back(Edge(this -> edges[i]));
+            }
+        }
+        assert(this -> deliver_edges.size() > 0);
+		this -> num_deliver_edges = this -> deliver_edges.size();
+	}
+
 	// Constructor given another object
 	Graph(Graph *another) {
 		this -> num_nodes = another -> num_nodes;
@@ -153,6 +165,9 @@ public:
 		for (int i = 0; i < another -> position.size(); ++i) {
 			this -> position.push_back(another -> position[i]);
 		}
+
+		// Filter for the must-deliver edges
+		this -> filter_must_deliver_edges();
 	}
 
 	// Constructor given the content
@@ -170,6 +185,9 @@ public:
         for (int i = 0; i < position.size(); ++i) {
             this -> position.push_back(position[i]);
         }
+
+		// Filter for the must-deliver edges
+        this -> filter_must_deliver_edges();
     }
 
 	// Load the content from file
@@ -220,6 +238,9 @@ public:
 	// Constructor given a file
 	Graph(const string file_name) {
 		load_from_file(file_name);
+
+		// Filter for the must-deliver edges
+        this -> filter_must_deliver_edges();
 	}
 
 	// Convert the content to a string
@@ -317,11 +338,17 @@ public:
 	// Number of edges
 	int num_edges;
 
+	// Number of edges that must be delivered
+	int num_deliver_edges;
+
 	// W
 	double W;
 
 	// Edges
 	vector<Edge> edges;
+
+	// Must-deliver edges
+	vector<Edge> deliver_edges;
 
 	// Position of each node
 	vector<Coordinate> position;

@@ -23,18 +23,19 @@ using namespace std;
 // | Brute-Force / Back-Tracking |
 // +-----------------------------+
 void Back_Tracking(Graph *graph, int i, bool *mask, int *perm, int *best_perm, double &best_cost) {
-	const int num_edges = graph -> num_edges;
-	for (int j = 0; j < num_edges; ++j) {
+	const int m = graph -> num_deliver_edges;
+	
+	for (int j = 0; j < m; ++j) {
 		if (mask[j] == false) {
 			perm[i] = j;
 			mask[j] = true;
 
-			if (i + 1 < num_edges) {
+			if (i + 1 < m) {
 				Back_Tracking(graph, i + 1, mask, perm, best_perm, best_cost);
 			} else {
 				vector<Edge> sequence;
 				sequence.clear();
-				for (int k = 0; k < num_edges; ++k) {
+				for (int k = 0; k < m; ++k) {
 					sequence.push_back(Edge(graph -> edges[perm[k]]));
 				}
 
@@ -44,7 +45,7 @@ void Back_Tracking(Graph *graph, int i, bool *mask, int *perm, int *best_perm, d
 				const double cost = dp.first[0][0];
 				if (cost < best_cost) {
 					best_cost = cost;
-					for (int k = 0; k < num_edges; ++k) {
+					for (int k = 0; k < m; ++k) {
 						best_perm[k] = perm[k];
 					}
 				}
@@ -60,17 +61,17 @@ pair< vector<Edge>, double> Brute_Force(Graph *graph) {
 	assert(graph -> shortest_path.size() == graph -> num_nodes);
 
 	const int num_nodes = graph -> num_nodes;
-	const int num_edges = graph -> num_edges;
+	const int m = graph -> num_deliver_edges;
 
 	// Mask
-	bool *mask = new bool [num_edges];
-	for (int i = 0; i < num_edges; ++i) {
+	bool *mask = new bool [m];
+	for (int i = 0; i < m; ++i) {
 		mask[i] = false;
 	}
 
 	// Permutation
-	int *perm = new int [num_edges];
-	int *best_perm = new int [num_edges];
+	int *perm = new int [m];
+	int *best_perm = new int [m];
 	
 	// Best cost
 	double best_cost = INF;
@@ -81,7 +82,7 @@ pair< vector<Edge>, double> Brute_Force(Graph *graph) {
 	// Solution
 	vector<Edge> sequence;
 	sequence.clear();
-	for (int k = 0; k < num_edges; ++k) {
+	for (int k = 0; k < m; ++k) {
 		sequence.push_back(Edge(graph -> edges[best_perm[k]]));
     }
 

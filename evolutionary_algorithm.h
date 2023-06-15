@@ -27,7 +27,10 @@ using namespace std;
 pair< vector<Edge>, double > mix_parents(Graph *graph, const vector<Edge> father, const vector<Edge> mother) {
 	// Information
 	const int num_nodes = graph -> num_nodes;
-	const int num_edges = graph -> num_edges;
+	const int m = graph -> num_deliver_edges;
+
+	assert(m == father.size());
+	assert(m == mother.size());
 
 	// Boolean mask
 	vector< vector<bool> > mask;
@@ -46,9 +49,6 @@ pair< vector<Edge>, double > mix_parents(Graph *graph, const vector<Edge> father
 	child.clear();
 
 	// Mixing
-	assert(father.size() == mother.size());
-	const int m = father.size();
-
 	int i = 0;
 	int j = 0;
 	while ((child.size() < m) && (i < m) && (j < m)) {
@@ -123,6 +123,7 @@ pair< vector<Edge>, double > mix_parents(Graph *graph, const vector<Edge> father
        	++j;
 	}
 
+	/*
 	if (child.size() < m) {
 		cout << child.size() << " " << m << endl;
 		cout << "Father:" << endl;
@@ -138,6 +139,7 @@ pair< vector<Edge>, double > mix_parents(Graph *graph, const vector<Edge> father
             cout << child[k].first << " " << child[k].second << endl;
         }   
 	}
+	*/
 
 	assert(child.size() == m);
 
@@ -149,7 +151,7 @@ pair< vector<Edge>, double > mix_parents(Graph *graph, const vector<Edge> father
 }
 
 // Evolutionary Algorithm
-pair< vector<Edge>, double> Evolutionary_Algorithm(Graph *graph, const int k_max = 100, const int max_population = 10) {
+pair< vector<Edge>, double> Evolutionary_Algorithm(Graph *graph, const int k_max = 75, const int max_population = 10) {
     // Greedy constructive heuristic
     pair< vector<Edge>, double > greedy = Greedy_Constructive_Heuristic(graph);
 

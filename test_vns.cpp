@@ -31,6 +31,7 @@ int main(int argc, char **argv) {
 
 	cout << "Number of nodes: " << graph -> num_nodes << endl;
     cout << "Number of edges: " << graph -> num_edges << endl;
+	cout << "Number of deliver-edges (q > 0): " << graph -> num_deliver_edges << endl;
 
     // Run the Floyd's algorithm
     graph -> Floyd_algorithm();

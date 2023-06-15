@@ -25,12 +25,12 @@ using namespace std;
 pair< vector<Edge>, double> Greedy_Constructive_Heuristic(Graph *graph) {
 	// Information
 	const int num_nodes = graph -> num_nodes;
-	const int num_edges = graph -> num_edges;
+	const int m = graph -> num_deliver_edges;
 		
 	vector<Edge> edges;
 	edges.clear();
-	for (int k = 0; k < num_edges; ++k) {
-		edges.push_back(Edge(graph -> edges[k]));
+	for (int k = 0; k < m; ++k) {
+		edges.push_back(Edge(graph -> deliver_edges[k]));
 	}
 
 	// Sort the list of edges
@@ -42,7 +42,7 @@ pair< vector<Edge>, double> Greedy_Constructive_Heuristic(Graph *graph) {
 	double best;
 
 	// Algorithm
-	for (int i = 0; i < num_edges; ++i) {
+	for (int i = 0; i < m; ++i) {
 		double z_min = INF;
 		vector<Edge> sigma_prime;
 
@@ -231,7 +231,7 @@ pair< vector<Edge>, double> Method_2_EXCHANGE(Graph *graph, const vector<Edge> s
 // +--------------------------------------------+
 // | Iterated Local Search (ILS) Meta-heuristic |
 // +--------------------------------------------+
-pair< vector<Edge>, double> Iterated_Local_Search(Graph *graph, const int k_max = 100) {
+pair< vector<Edge>, double> Iterated_Local_Search(Graph *graph, const int k_max = 75) {
 	// Greedy constructive heuristic
 	pair< vector<Edge>, double > greedy = Greedy_Constructive_Heuristic(graph);
 	vector<Edge> sigma_star = greedy.first;
@@ -275,7 +275,7 @@ pair< vector<Edge>, double> Iterated_Local_Search(Graph *graph, const int k_max 
 // +---------------------------------------------------+
 // | Variable Neighborhood Search (VNS) Meta-heuristic |
 // +---------------------------------------------------+
-pair< vector<Edge>, double> Variable_Neighborhood_Search(Graph *graph, const int k_max = 100) {
+pair< vector<Edge>, double> Variable_Neighborhood_Search(Graph *graph, const int k_max = 75) {
     // Greedy constructive heuristic
     pair< vector<Edge>, double > greedy = Greedy_Constructive_Heuristic(graph);
     vector<Edge> sigma_star = greedy.first;
