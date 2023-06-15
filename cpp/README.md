@@ -2,8 +2,19 @@
 ## Author: Dr. Truong Son Hy
 ## Copyright 2023
 
+### Data generation
+* Data generation is based on paper "The Chinese Postman Problem with Load-Dependent Costs" https://pubsonline.informs.org/doi/abs/10.1287/trsc.2017.0774
+
 * Implementation to generate Eulerian cases: ```gen_eulerian.cpp```.
 
+* Implementation to generate Rural Postmam Problem (RPP) cases: ```gen_rural.cpp```.
+
+* In the ```data/``` direction:
+- Prefix `E` denotes the Eulerian cases
+- Prefix `C` denotes the cases based on Christofides et al.
+- Prefix `H` denotes the cases based on Hertz et al.
+
+### Structure
 * Graph object's implementation: ```Graph.h```.
 
 * Meta-heuristics' implementation: ```meta_heuristics.h```.
@@ -12,6 +23,8 @@
 
 * Brute-Force / Back-Tracking's implementation: ```brute_force.h```.
 
+
+### Running
 * Example of how to load / save graph from / to file, use the object and run the Floyd's algorithm: ```test_graph.cpp```.
 
 * Test the dynamic programming for finding the optimal directions of edges: ```test_dp.cpp```.
