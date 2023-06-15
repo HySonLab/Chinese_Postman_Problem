@@ -151,7 +151,7 @@ pair< vector<Edge>, double > mix_parents(Graph *graph, const vector<Edge> father
 }
 
 // Evolutionary Algorithm
-pair< vector<Edge>, double> Evolutionary_Algorithm(Graph *graph, const int k_max = 75, const int max_population = 10) {
+pair< vector<Edge>, double> Evolutionary_Algorithm(Graph *graph, const int k_max = 75, const int max_population = 10, const bool verbose = true) {
     // Greedy constructive heuristic
     pair< vector<Edge>, double > greedy = Greedy_Constructive_Heuristic(graph);
 
@@ -219,6 +219,10 @@ pair< vector<Edge>, double> Evolutionary_Algorithm(Graph *graph, const int k_max
 		}
 
 		population = next_generation;
+
+		if (verbose) {
+            cout << "Done " << k << " iterations." << endl;
+        }
 	}
 
 	// Select the best gene
