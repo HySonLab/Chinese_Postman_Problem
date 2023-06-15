@@ -10,9 +10,9 @@
 * Implementation to generate Rural Postmam Problem (RPP) cases: ```gen_rural.cpp```.
 
 * In the ```data/``` direction:
-- Prefix `E` denotes the Eulerian cases
-- Prefix `C` denotes the cases based on Christofides et al.
-- Prefix `H` denotes the cases based on Hertz et al.
+** Prefix `E` denotes the Eulerian cases
+** Prefix `C` denotes the cases based on Christofides et al.
+** Prefix `H` denotes the cases based on Hertz et al.
 
 ### Structure
 * Graph object's implementation: ```Graph.h```.
