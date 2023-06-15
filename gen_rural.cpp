@@ -193,8 +193,8 @@ void Christofides_et_al() {
 
 // Hertz et al.
 void Hertz_et_al() {
-	const vector<int> V = {6, 7, 8, 9, 10, 11, 12, 14};
-    const vector<int> E = {11, 15, 20, 25, 30, 35, 40, 48};
+	const vector<int> V = {6, 7, 8, 9, 10, 11, 12, 14, 18, 21, 24, 27};
+    const vector<int> E = {11, 15, 20, 25, 30, 35, 40, 48, 22, 26, 30, 33};
     const vector<double> W_const = {0.5};
     const string prefix = "H";
 	
