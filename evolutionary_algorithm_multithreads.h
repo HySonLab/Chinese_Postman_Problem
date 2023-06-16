@@ -152,7 +152,7 @@ pair< vector<Edge>, double > mix_parents(Graph *graph, const vector<Edge> father
 }
 
 // Evolutionary Algorithm with multi-threading
-pair< vector<Edge>, double> Evolutionary_Algorithm_MultiThreads(Graph *graph, const int k_max = 75, const int max_population = 10, const bool verbose = false, const int num_threads = 12) {
+pair< vector<Edge>, double> Evolutionary_Algorithm_MultiThreads(Graph *graph, const int k_max = 75, const int max_population = 10, const bool verbose = true, const int num_threads = 12) {
     // Multi-threading
 	assert(num_threads % 3 == 0);
 	const int batch_size = num_threads / 3;
@@ -161,6 +161,10 @@ pair< vector<Edge>, double> Evolutionary_Algorithm_MultiThreads(Graph *graph, co
 
 	// Greedy constructive heuristic
     pair< vector<Edge>, double > greedy = Greedy_Constructive_Heuristic(graph);
+
+	// Number of deliver edges
+    const int m = greedy.first.size();
+    assert(m == graph -> num_deliver_edges);
 
 	// Initialize the population
 	vector< pair< vector<Edge>, double > > population;
@@ -179,6 +183,10 @@ pair< vector<Edge>, double> Evolutionary_Algorithm_MultiThreads(Graph *graph, co
 		pair< vector< vector<double> >, vector<int> > dp = dynamic_programming(graph, sequence);
 		population.push_back(make_pair(sequence, dp.first[0][0]));
 	}
+
+	if (verbose) {
+        cout << "Initial population: " << population.size() << endl;
+    }
 
 	// Evolution
 	for (int k = 1; k <= k_max; ++k) {
@@ -283,8 +291,56 @@ pair< vector<Edge>, double> Evolutionary_Algorithm_MultiThreads(Graph *graph, co
 
 		population = next_generation;
 
+		// Prune the population, only keep the unique
+        vector<bool> mask;
+        mask.clear();
+        for (int i = 0; i < population.size(); ++i) {
+            mask.push_back(false);
+        }
+
+        for (int i = 0; i < population.size(); ++i) {
+            if (mask[i]) {
+                continue;
+            }
+            for (int j = i + 1; j < population.size(); ++j) {
+                if (mask[j]) {
+                    continue;
+                }
+
+                // Check if these twos are the same
+                if (abs(population[i].second - population[j].second) > 1e-3) {
+                    continue;
+                }
+                bool same = true;
+                for (int k = 0; k < m; ++k) {
+                    const Edge e1 = population[i].first[k];
+                    const Edge e2 = population[j].first[k];
+                    if ((e1.first == e2.first) && (e1.second == e2.second)) {
+                        continue;
+                    }
+                    if ((e1.first == e2.second) && (e1.second == e2.first)) {
+                        continue;
+                    }
+                    same = false;
+                    break;
+                }
+                if (same) {
+                    mask[j] = true;
+                }
+            }
+        }
+
+        vector< pair< vector<Edge>, double > > unique;
+        unique.clear();
+        for (int i = 0; i < population.size(); ++i) {
+            if (!mask[i]) {
+                unique.push_back(population[i]);
+            }
+        }
+        population = unique;
+
 		if (verbose) {
-            cout << "Done " << k << " iterations." << endl;
+            cout << "After " << k << " iterations: Population = " << population.size() << endl;
         }
 	}
 
