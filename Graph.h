@@ -361,7 +361,7 @@ public:
 // +---------------------+
 // | Dynamic Programming |
 // +---------------------+
-pair< vector< vector<double> >, vector<int> > dynamic_programming(Graph *graph, const vector<Edge> sequence) {
+static pair< vector< vector<double> >, vector<int> > dynamic_programming(Graph *graph, const vector<Edge> sequence) {
 	// Start node
 	const int start_node = graph -> start_node;
 

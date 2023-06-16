@@ -13,6 +13,7 @@
 #include <thread>
 #include <algorithm>
 #include <assert.h>
+#include <thread>
 
 #include "Graph.h"
 
@@ -107,6 +108,8 @@ vector<Edge> random_exchange(const vector<Edge> edges, const int factor = 5) {
 // +-------+
 // | 1-OPT |
 // +-------+
+
+// For single-thread
 pair< vector<Edge>, double> Method_1_OPT(Graph *graph, const vector<Edge> sigma) {
 	double best = INF;
 	vector<Edge> result;
@@ -151,6 +154,8 @@ pair< vector<Edge>, double> Method_1_OPT(Graph *graph, const vector<Edge> sigma)
 // +-------+
 // | 2-OPT |
 // +-------+
+
+// For single-thread
 pair< vector<Edge>, double> Method_2_OPT(Graph *graph, const vector<Edge> sigma) {
     double best = INF;
     vector<Edge> result;
@@ -192,6 +197,8 @@ pair< vector<Edge>, double> Method_2_OPT(Graph *graph, const vector<Edge> sigma)
 // +------------+
 // | 2-EXCHANGE |
 // +------------+
+
+// For single-thread
 pair< vector<Edge>, double> Method_2_EXCHANGE(Graph *graph, const vector<Edge> sigma) {
     double best = INF;
     vector<Edge> result;
@@ -231,7 +238,9 @@ pair< vector<Edge>, double> Method_2_EXCHANGE(Graph *graph, const vector<Edge> s
 // +--------------------------------------------+
 // | Iterated Local Search (ILS) Meta-heuristic |
 // +--------------------------------------------+
-pair< vector<Edge>, double> Iterated_Local_Search(Graph *graph, const int k_max = 75, const bool verbose = true) {
+
+// Single-thread implementation
+pair< vector<Edge>, double> Iterated_Local_Search(Graph *graph, const int k_max = 75, const bool verbose = false) {
 	// Greedy constructive heuristic
 	pair< vector<Edge>, double > greedy = Greedy_Constructive_Heuristic(graph);
 	vector<Edge> sigma_star = greedy.first;
@@ -279,7 +288,7 @@ pair< vector<Edge>, double> Iterated_Local_Search(Graph *graph, const int k_max 
 // +---------------------------------------------------+
 // | Variable Neighborhood Search (VNS) Meta-heuristic |
 // +---------------------------------------------------+
-pair< vector<Edge>, double> Variable_Neighborhood_Search(Graph *graph, const int k_max = 75, const bool verbose = true) {
+pair< vector<Edge>, double> Variable_Neighborhood_Search(Graph *graph, const int k_max = 75, const bool verbose = false) {
     // Greedy constructive heuristic
     pair< vector<Edge>, double > greedy = Greedy_Constructive_Heuristic(graph);
     vector<Edge> sigma_star = greedy.first;

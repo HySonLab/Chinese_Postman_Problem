@@ -15,7 +15,7 @@
 ### Structure
 * Graph object's implementation: ```Graph.h```.
 
-* Meta-heuristics' implementation: ```meta_heuristics.h```.
+* Meta-heuristics' implementation: ```meta_heuristics.h```. With multi-threading (much faster): ```meta_heuristics_multithreads.h```.
 
 * Evolutionary Algorithm's implementation: ```evolutionary_algorithm.h```.
 
@@ -35,6 +35,10 @@ Usage: ```g++ test_greedy.cpp -o test_greedy```, then ```./test_greedy [file nam
 
 Usage: ```g++ test_ils.cpp -o test_ils```, then ```./test_ils [file name]```.
 
+* Test the Iterative Local Search with multi-threading (much faster): ```test_ils_multithreads.cpp```.
+
+Usage: ```g++ test_ils_multithreads.cpp -o -lpthread```, then ```./a.out [file name]```.
+
 * Test the Variable Neighborhood Search: ```test_vns.cpp```.
 
 Usage: ```g++ test_vns.cpp -o test_vns```, then ```./test_vns [file name]```.
@@ -42,6 +46,10 @@ Usage: ```g++ test_vns.cpp -o test_vns```, then ```./test_vns [file name]```.
 * Test the Evolutionary Algorithm: ```test_ea.cpp```.
 
 Usage: ```g++ test_ea.cpp -o test_ea```, then ```./test_ea [file name]```.
+
+* Test the Evolutionary Algorithm with multi-threading (much faster): ```test_ea_multithreads.cpp```.
+
+Usage: ```g++ test_ea_multithreads.cpp -o -lpthread```, then ```./a.out [file name]```.
 
 * Test the Brute-Force / Back-Tracking: ```test_brute_force.cpp```.
 

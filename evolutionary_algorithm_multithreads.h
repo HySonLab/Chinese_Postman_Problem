@@ -13,15 +13,16 @@
 #include <thread>
 #include <algorithm>
 #include <assert.h>
+#include <thread>
 
 #include "Graph.h"
-#include "meta_heuristics.h"
+#include "meta_heuristics_multithreads.h"
 
 using namespace std;
 
-// +------------------------+
-// | Evolutionary Algorithm |
-// +------------------------+
+// +------------------------------------------+
+// | Evolutionary Algorithm (Multi-Threading) |
+// +------------------------------------------+
 
 // Mixing two parents into a child
 pair< vector<Edge>, double > mix_parents(Graph *graph, const vector<Edge> father, const vector<Edge> mother) {
@@ -150,9 +151,15 @@ pair< vector<Edge>, double > mix_parents(Graph *graph, const vector<Edge> father
 	return make_pair(child, cost);
 }
 
-// Evolutionary Algorithm
-pair< vector<Edge>, double> Evolutionary_Algorithm(Graph *graph, const int k_max = 75, const int max_population = 10, const bool verbose = false) {
-    // Greedy constructive heuristic
+// Evolutionary Algorithm with multi-threading
+pair< vector<Edge>, double> Evolutionary_Algorithm_MultiThreads(Graph *graph, const int k_max = 75, const int max_population = 10, const bool verbose = false, const int num_threads = 12) {
+    // Multi-threading
+	assert(num_threads % 3 == 0);
+	const int batch_size = num_threads / 3;
+
+	std::thread threads[num_threads];
+
+	// Greedy constructive heuristic
     pair< vector<Edge>, double > greedy = Greedy_Constructive_Heuristic(graph);
 
 	// Initialize the population
@@ -186,13 +193,69 @@ pair< vector<Edge>, double> Evolutionary_Algorithm(Graph *graph, const int k_max
 		}
 
 		// Create new children via mutation
-		for (int i = 0; i < population.size(); ++i) {
-			children.push_back(Method_1_OPT(graph, population[i].first));
-    		children.push_back(Method_2_OPT(graph, population[i].first));
-    		children.push_back(Method_2_EXCHANGE(graph, population[i].first));
+		int start = 0;
+		while (start < population.size()) {
+			int finish;
+			if (start + batch_size - 1 < population.size()) {
+				finish = start + batch_size - 1;
+			} else {
+				finish = population.size() - 1;
+			}
+
+			// Multi-threading
+			int index = children.size();
+			for (int i = start; i <= finish; ++i) {
+				pair< vector<Edge>, double> Result_1_OPT;
+                children.push_back(Result_1_OPT);
+
+				pair< vector<Edge>, double> Result_2_OPT;
+                children.push_back(Result_2_OPT);
+				
+				pair< vector<Edge>, double> Result_2_EXCHANGE;
+                children.push_back(Result_2_EXCHANGE);
+			}
+
+			int t = 0;
+			for (int i = start; i <= finish; ++i) {
+				threads[t] = std::thread(Method_1_OPT_MultiThreads, graph, std::cref(population[i].first), std::ref(children[index]));
+				++index;
+				++t;
+
+                threads[t] = std::thread(Method_2_OPT_MultiThreads, graph, std::cref(population[i].first), std::ref(children[index]));
+                ++index;
+				++t;
+
+                threads[t] = std::thread(Method_2_EXCHANGE_MultiThreads, graph, std::cref(population[i].first), std::ref(children[index]));
+				++index;
+				++t;
+			}
+
+			assert(index == children.size());
+
+			// Threads Synchronization
+			for (int i = 0; i < t; ++i) {
+				threads[i].join();
+			}
+
+			start = finish + 1;
 		}
 
+		// Filter out bad children
+		/*
+		vector< pair< vector<Edge>, double > > good_children;
+        good_children.clear();
+
+		for (int i = 0; i < children.size(); ++i) {
+			if (children[i].first.size() > 0) {
+				good_children.push_back(children[i]);
+			}
+		}
+
+		children = good_children;
+		*/
+
 		// Construct the ranking via fitness
+		assert(children.size() > 0);
 		vector< pair<double, int> > rank;
 		rank.clear();
 		for (int i = 0; i < population.size(); ++i) {
