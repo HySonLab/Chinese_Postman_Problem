@@ -19,6 +19,8 @@
 
 * Evolutionary Algorithm's implementation: ```evolutionary_algorithm.h```. With multi-threading (much faster): ```evolutionary_algorithm_multithreads.h```.
 
+* Ant Colony Optimization's implementation: ```ant_colony_optimization.h```.
+
 * Brute-Force / Back-Tracking's implementation: ```brute_force.h```. With multi-threading (much faster): ```brute_force_multithreads.h```.
 
 
@@ -50,6 +52,10 @@ Usage: ```g++ test_ea.cpp -o test_ea```, then ```./test_ea [file name]```.
 * Test the Evolutionary Algorithm with multi-threading (much faster): ```test_ea_multithreads.cpp```.
 
 Usage: ```g++ test_ea_multithreads.cpp -lpthread```, then ```./a.out [file name]```.
+
+* Test the Ant Colony Optimization: ```test_aco.cpp```.
+
+Usage: ```g++ test_aco.cpp -o test_aco```, then ```./test_aco [file name]```.
 
 * Test the Brute-Force / Back-Tracking: ```test_brute_force.cpp```.
 

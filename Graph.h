@@ -30,6 +30,9 @@ const double INF = 1e9;
 // +----------------+
 struct Edge {
 	// Constructors
+	Edge() {
+	}
+
 	Edge(const Edge& another) {
 		first = another.first;
 		second = another.second;

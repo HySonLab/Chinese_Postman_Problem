@@ -1,0 +1,342 @@
+// Ant colony optimization (ACO) for the load-dependent Chinese postman problem
+// Author: Dr. Truong Son Hy
+// Copyright 2023
+
+#include <iostream>
+#include <fstream>
+#include <cstring>
+#include <string>
+#include <cstdio>
+#include <cstdlib>
+#include <cmath>
+#include <vector>
+#include <thread>
+#include <algorithm>
+#include <assert.h>
+
+#include "Graph.h"
+#include "meta_heuristics.h"
+
+using namespace std;
+
+// +-------------------------------+
+// | Ant Colony Optimization (ACO) |
+// +-------------------------------+
+
+// Search 
+int state_index(const int first, const int second, const vector<Edge> &edges) {
+	for (int i = 0; i < edges.size(); ++i) {
+		if ((first == edges[i].first) && (second == edges[i].second)) {
+			return 2 * i;
+		}
+		if ((first == edges[i].second) && (second == edges[i].first)) {
+            return 2 * i + 1;
+        }
+	}
+	return -1;
+}
+
+// Random number from 0 to 1
+double rand_double(const int MAX_RANGE = 1000) {
+	double r = rand() % (MAX_RANGE + 1);
+	return r / (double)(MAX_RANGE);
+}
+
+// Ant's random walk
+void ant_walk(
+	Graph *graph, 
+	double **tau, 
+	double **eta, 
+	const int origin_state, 
+	int *state_path, 
+	Edge *sequence, 
+	int *direction, 
+	double &cost
+) {
+	// Information
+	const int m = graph -> num_deliver_edges;
+	const int start_node = graph -> start_node;
+
+	// Mask if an edge is delivered
+	vector<bool> mask;
+	mask.clear();
+	for (int k = 0; k < m; ++k) {
+		mask.push_back(false);
+	}
+
+	// Random walk
+	int state = origin_state;
+	for (int k = 0; k < m; ++k) {
+		// List of possible next states to visit
+		vector< pair<double, int> > candidate;
+		candidate.clear();
+
+		for (int i = 0; i < m; ++i) {
+			if (!mask[i]) {
+				candidate.push_back(make_pair(- tau[state][2 * i] * eta[state][2 * i], 2 * i));
+				candidate.push_back(make_pair(- tau[state][2 * i + 1] * eta[state][2 * i + 1], 2 * i + 1));
+			}
+		}
+
+		// Sort based on the potential
+		sort(candidate.begin(), candidate.end());
+
+		// Reverse the sign
+		for (int i = 0; i < candidate.size(); ++i) {
+			candidate[i].first = abs(candidate[i].first);
+		}
+
+		// Compute the probabilities
+		double sum = 0;
+		for (int i = 0; i < candidate.size(); ++i) {
+			sum += candidate[i].first;
+		}
+
+		for (int i = 0; i < candidate.size(); ++i) {
+			candidate[i].first /= sum;
+		}
+
+		// Random a number from 0 to 1
+		const double r = rand_double();
+
+		// Sampling
+		int next_state = candidate[0].second;
+		double s = 0;
+		for (int i = 0; i < candidate.size(); ++i) {
+			s += candidate[i].first;
+			if (r <= s) {
+				next_state = candidate[i].second;
+			} else {
+				break;
+			}
+		}
+
+		// Add the corresponding edge to the sequence
+		const int edge_index = next_state / 2;
+		assert(edge_index >= 0);
+		assert(edge_index < m);
+		assert(mask[edge_index] == false);
+
+		sequence[k] = Edge(graph -> deliver_edges[edge_index]);
+
+		// Mask it
+		mask[edge_index] = true;
+
+		// Update the state
+		state = next_state;
+		state_path[k] = state;
+	}
+
+	// Dynamic programming
+	vector<Edge> seq;
+	seq.clear();
+	for (int i = 0; i < m; ++i) {
+		seq.push_back(sequence[i]);
+	}
+
+	pair< vector< vector<double> >, vector<int> > dp = dynamic_programming(graph, seq);
+
+	// Return
+	cost = dp.first[0][0];
+
+	for (int i = 0; i < m; ++i) {
+		direction[i] = dp.second[i];
+	}
+
+	for (int i = 0; i < m; ++i) {
+		if (direction[i] == 1) {
+			if (state_path[i] % 2 == 0) {
+				state_path[i] += 1;
+			} else {
+				state_path[i] -= 1;
+			}
+		}
+	}
+}
+
+// Ant Colony Optimization (ACO)
+pair< vector<Edge>, double> Ant_Colony_Optimization(
+	Graph *graph, 
+	const int k_max = 1000, 
+	const int num_ants = 100, 
+	const bool verbose = false
+) {
+	// Result
+	pair< vector<Edge>, double> result;
+
+	// Information
+	const double W = graph -> W;
+	const int m = graph -> num_deliver_edges;
+	const int start_node = graph -> start_node;
+
+	// Sum of loads
+	double sum_Q = 0.0;
+	for (int i = 0; i < m; ++i) {
+		sum_Q += graph -> deliver_edges[i].q;
+	}
+
+	// Number of states
+	const int num_states = 2 * m + 1;
+
+	// Original state
+	const int origin_state = 2 * m;
+
+	// Pheromone
+	double **tau = new double* [num_states];
+	for (int i = 0; i < num_states; ++i) {
+		tau[i] = new double [num_states];
+		for (int j = 0; j < num_states; ++j) {
+			tau[i][j] = 0.0;
+		}
+	}
+
+	// Deposit some pheromone
+	for (int i = 0; i < m; ++i) {
+		for (int j = i + 1; j < m; ++j) {
+			tau[2 * i][2 * j] = 1.0;
+			tau[2 * i + 1][2 * j] = 1.0;
+			tau[2 * i][2 * j + 1] = 1.0;
+            tau[2 * i + 1][2 * j + 1] = 1.0;
+		}
+	}
+
+	// Greedy constructive heuristic
+    pair< vector<Edge>, double > greedy = Greedy_Constructive_Heuristic(graph);
+	assert(greedy.first.size() == m);
+	result = greedy;
+
+	// Dynamic programming to determine the direction
+	pair< vector< vector<double> >, vector<int> > dp = dynamic_programming(graph, greedy.first);
+	assert(dp.second.size() == m);
+	assert(abs(dp.first[0][0] - greedy.second) < 1e-6);
+
+	// Initialize the pheromone
+	int prev_state = origin_state;
+	for (int i = 0; i < m; ++i) {
+		int first, second;
+		if (dp.second[i] == 0) {
+			first = greedy.first[i].first;
+			second = greedy.first[i].second;
+		} else {
+			first = greedy.first[i].second;
+            second = greedy.first[i].first;
+		}
+		
+		const int state = state_index(first, second, graph -> deliver_edges);
+		tau[prev_state, state] += (m - i);
+
+		prev_state = state;
+	}
+
+	// Priori knowledge
+	double **eta = new double* [num_states];
+	for (int i = 0; i < num_states; ++i) {
+		eta[i] = new double [num_states];
+		for (int j = 0; j < num_states; ++j) {
+			eta[i][j] = 0.0;
+		}
+	}
+
+	// Initialize priori knowledge from the original state to other states
+	for (int k = 0; k < m; ++k) {
+		const int i = graph -> deliver_edges[k].first;
+		const int j = graph -> deliver_edges[k].second;
+		const double d = graph -> deliver_edges[k].d;
+		const double q = graph -> deliver_edges[k].q;
+
+		double c;
+
+		// State 2 * k
+		c = (W + sum_Q) * graph -> shortest_path[start_node][i] + (W + sum_Q - q / 2) * d;
+		eta[origin_state][2 * k] = 1.0 / c;
+
+		// State 2 * k + 1
+		c = (W + sum_Q) * graph -> shortest_path[start_node][j] + (W + sum_Q - q / 2) * d;
+		eta[origin_state][2 * k + 1] = 1.0 / c;
+	}
+
+	// Initialize priori knowledge between other states
+	for (int k1 = 0; k1 < m; ++k1) {
+		const int i1 = graph -> deliver_edges[k1].first;
+		const int j1 = graph -> deliver_edges[k1].second;
+        
+		for (int k2 = 0; k2 < m; ++k2) {
+			const int i2 = graph -> deliver_edges[k2].first;
+			const int j2 = graph -> deliver_edges[k2].second;
+			const double d = graph -> deliver_edges[k2].d;
+			const double q = graph -> deliver_edges[k2].q;
+
+			double c;
+
+			// State 2 * k1 to 2 * k2
+			// i1 -> j1 -> i2 -> j2
+			c = (W + q) * graph -> shortest_path[j1][i2] + (W + q / 2) * d;
+			eta[2 * k1][2 * k2] = 1.0 / c;
+
+			// State 2 * k1 + 1 to 2 * k2
+			// j1 -> i1 -> i2 -> j2
+			c = (W + q) * graph -> shortest_path[i1][i2] + (W + q / 2) * d;
+			eta[2 * k1 + 1][2 * k2] = 1.0 / c;
+
+			// State 2 * k1 to 2 * k2 + 1
+			// i1 -> j1 -> j2 -> i2
+			c = (W + q) * graph -> shortest_path[j1][j2] + (W + q / 2) * d;
+			eta[2 * k1][2 * k2 + 1] = 1.0 / c;
+
+			// State 2 * k1 + 1 to 2 * k2 + 1
+			// j1 -> i1 -> j2 -> i2
+			c = (W + q) * graph -> shortest_path[i1][j2] + (W + q / 2) * d;
+			eta[2 * k1 + 1][2 * k2 + 1] = 1.0 / c;
+		}
+	}
+
+	// Process
+	int *state_path = new int [m];
+	Edge *sequence = new Edge [m];
+	int *direction = new int [m];
+	double cost;
+
+	for (int k = 1; k <= k_max; ++k) {
+		// For each ant
+		for (int ant = 0; ant < num_ants; ++ant) {
+			// Random walk
+			ant_walk(graph, tau, eta, origin_state, state_path, sequence, direction, cost);
+
+			// Update the trace of pheromone
+			int state = origin_state;
+			for (int i = 0; i < m; ++i) {
+				tau[state][state_path[i]] += 1.0 / sqrt(cost);
+				state = state_path[i];
+			}
+
+			// Update the best solution
+			if (cost < result.second) {
+				result.first.clear();
+				for (int i = 0; i < m; ++i) {
+					result.first.push_back(sequence[i]);
+				}
+				result.second = cost;
+			}
+		}
+
+		if (verbose) {
+			cout << "Completed " << k << " iterations." << endl;
+		}
+	}
+
+	// Release memory
+	/*
+	for (int i = 0; i < num_states; ++i) {
+		delete[] tau[i];
+		delete[] eta[i];
+	}
+	delete[] tau;
+	delete[] eta;
+	delete[] state_path;
+	delete[] sequence;
+	delete[] direction;
+	*/
+
+	return result;
+}
+
