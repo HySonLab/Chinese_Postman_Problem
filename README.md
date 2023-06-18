@@ -19,7 +19,7 @@
 
 * Evolutionary Algorithm's implementation: ```evolutionary_algorithm.h```.
 
-* Brute-Force / Back-Tracking's implementation: ```brute_force.h```.
+* Brute-Force / Back-Tracking's implementation: ```brute_force.h```. With multi-threading (much faster): ```brute_force_multithreads.h```.
 
 
 ### Running
@@ -55,7 +55,11 @@ Usage: ```g++ test_ea_multithreads.cpp -lpthread```, then ```./a.out [file name]
 
 Usage: ```g++ test_brute_force.cpp -o test_brute_force```, then ```./test_brute_force [file name]```.
 
-* Example (script) of running all the baselines including (slow) brute-force: ```test_all_baselines.sh```.
+* Test the Brute-Force / Back-Tracking with multi-threading (much faster): ```test_brute_force_multithreads.cpp```.
+
+Usage: ```g++ test_brute_force_multithreads.cpp -lpthread```, then ```./a.out [file name]```.
+
+* Example (script) of running all the baselines including brute-force: ```test_all_baselines.sh```.
 
 Usage: ```sh test_all_baselines.sh```.
 

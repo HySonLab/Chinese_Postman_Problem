@@ -212,12 +212,12 @@ pair< vector<Edge>, double> Evolutionary_Algorithm(Graph *graph, const int k_max
 		sort(rank.begin(), rank.end());
 
 		// Select the best for the next generation
-		assert(rank.size() >= max_population);
+		// assert(rank.size() >= max_population);
 		
 		vector< pair< vector<Edge>, double > > next_generation;
 		next_generation.clear();
 
-		for (int i = 0; i < max_population; ++i) {
+		for (int i = 0; i < min(max_population, int(rank.size())); ++i) {
 			const int index = rank[i].second;
 			if (index < population.size()) {
 				next_generation.push_back(population[index]);
