@@ -151,7 +151,15 @@ pair< vector<Edge>, double > mix_parents(Graph *graph, const vector<Edge> father
 }
 
 // Evolutionary Algorithm
-pair< vector<Edge>, double> Evolutionary_Algorithm(Graph *graph, const int k_max = 75, const int max_population = 10, const bool verbose = true) {
+pair< vector<Edge>, double> Evolutionary_Algorithm(
+	Graph *graph, 
+	const int k_max = 75, 
+	const int max_population = 10, 
+	const bool verbose = true,
+	const bool use_1_OPT = true,
+	const bool use_2_OPT = true,
+	const bool use_2_EXCHANGE = true
+) {
     // Greedy constructive heuristic
     pair< vector<Edge>, double > greedy = Greedy_Constructive_Heuristic(graph);
 
@@ -164,11 +172,6 @@ pair< vector<Edge>, double> Evolutionary_Algorithm(Graph *graph, const int k_max
 	population.clear();
 
 	population.push_back(greedy);
-	/*
-	  	population.push_back(Method_1_OPT(graph, greedy.first));
-		population.push_back(Method_2_OPT(graph, greedy.first));
-		population.push_back(Method_2_EXCHANGE(graph, greedy.first));
-	*/
 
 	while (population.size() < max_population) {
 		// Random exchange
@@ -195,9 +198,15 @@ pair< vector<Edge>, double> Evolutionary_Algorithm(Graph *graph, const int k_max
 
 		// Create new children via mutation
 		for (int i = 0; i < population.size(); ++i) {
-			children.push_back(Method_1_OPT(graph, population[i].first));
-    		children.push_back(Method_2_OPT(graph, population[i].first));
-    		children.push_back(Method_2_EXCHANGE(graph, population[i].first));
+			if (use_1_OPT) {
+				children.push_back(Method_1_OPT(graph, population[i].first));
+			}
+			if (use_2_OPT) {
+				children.push_back(Method_2_OPT(graph, population[i].first));
+			}
+			if (use_2_EXCHANGE) {
+				children.push_back(Method_2_EXCHANGE(graph, population[i].first));
+			}
 		}
 
 		// Construct the ranking via fitness

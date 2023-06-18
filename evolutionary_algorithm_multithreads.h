@@ -152,10 +152,32 @@ pair< vector<Edge>, double > mix_parents(Graph *graph, const vector<Edge> father
 }
 
 // Evolutionary Algorithm with multi-threading
-pair< vector<Edge>, double> Evolutionary_Algorithm_MultiThreads(Graph *graph, const int k_max = 75, const int max_population = 10, const bool verbose = true, const int num_threads = 12) {
+pair< vector<Edge>, double> Evolutionary_Algorithm_MultiThreads(
+	Graph *graph, 
+	const int k_max = 75, 
+	const int max_population = 10, 
+	const bool verbose = true, 
+	const int num_threads = 12,
+	const bool use_1_OPT = true,
+	const bool use_2_OPT = true,
+	const bool use_2_EXCHANGE = true
+) {
+	// Number of operators
+	int num_op = 0;
+	if (use_1_OPT) {
+		++num_op;
+	}
+	if (use_2_OPT) {
+		++num_op;
+	}
+	if (use_2_EXCHANGE) {
+		++num_op;
+	}
+	assert(num_op > 0);
+
     // Multi-threading
-	assert(num_threads % 3 == 0);
-	const int batch_size = num_threads / 3;
+	assert(num_threads % num_op == 0);
+	const int batch_size = num_threads / num_op;
 
 	std::thread threads[num_threads];
 
@@ -171,11 +193,6 @@ pair< vector<Edge>, double> Evolutionary_Algorithm_MultiThreads(Graph *graph, co
 	population.clear();
 
 	population.push_back(greedy);
-	/*
-	  	population.push_back(Method_1_OPT(graph, greedy.first));
-		population.push_back(Method_2_OPT(graph, greedy.first));
-		population.push_back(Method_2_EXCHANGE(graph, greedy.first));
-	*/
 
 	while (population.size() < max_population) {
 		// Random exchange
@@ -213,29 +230,41 @@ pair< vector<Edge>, double> Evolutionary_Algorithm_MultiThreads(Graph *graph, co
 			// Multi-threading
 			int index = children.size();
 			for (int i = start; i <= finish; ++i) {
-				pair< vector<Edge>, double> Result_1_OPT;
-                children.push_back(Result_1_OPT);
+				if (use_1_OPT) {
+					pair< vector<Edge>, double> Result_1_OPT;
+                	children.push_back(Result_1_OPT);
+				}
 
-				pair< vector<Edge>, double> Result_2_OPT;
-                children.push_back(Result_2_OPT);
-				
-				pair< vector<Edge>, double> Result_2_EXCHANGE;
-                children.push_back(Result_2_EXCHANGE);
+				if (use_2_OPT) {
+					pair< vector<Edge>, double> Result_2_OPT;
+                	children.push_back(Result_2_OPT);
+				}
+
+				if (use_2_EXCHANGE) {
+					pair< vector<Edge>, double> Result_2_EXCHANGE;
+                	children.push_back(Result_2_EXCHANGE);
+				}
 			}
 
 			int t = 0;
 			for (int i = start; i <= finish; ++i) {
-				threads[t] = std::thread(Method_1_OPT_MultiThreads, graph, std::cref(population[i].first), std::ref(children[index]));
-				++index;
-				++t;
+				if (use_1_OPT) {
+					threads[t] = std::thread(Method_1_OPT_MultiThreads, graph, std::cref(population[i].first), std::ref(children[index]));
+					++index;
+					++t;
+				}
 
-                threads[t] = std::thread(Method_2_OPT_MultiThreads, graph, std::cref(population[i].first), std::ref(children[index]));
-                ++index;
-				++t;
+				if (use_2_OPT) {
+                	threads[t] = std::thread(Method_2_OPT_MultiThreads, graph, std::cref(population[i].first), std::ref(children[index]));
+                	++index;
+					++t;
+				}
 
-                threads[t] = std::thread(Method_2_EXCHANGE_MultiThreads, graph, std::cref(population[i].first), std::ref(children[index]));
-				++index;
-				++t;
+				if (use_2_EXCHANGE) {
+                	threads[t] = std::thread(Method_2_EXCHANGE_MultiThreads, graph, std::cref(population[i].first), std::ref(children[index]));
+					++index;
+					++t;
+				}
 			}
 
 			assert(index == children.size());
