@@ -17,7 +17,7 @@
 
 * Meta-heuristics' implementation: ```meta_heuristics.h```. With multi-threading (much faster): ```meta_heuristics_multithreads.h```.
 
-* Evolutionary Algorithm's implementation: ```evolutionary_algorithm.h```.
+* Evolutionary Algorithm's implementation: ```evolutionary_algorithm.h```. With multi-threading (much faster): ```evolutionary_algorithm_multithreads.h```.
 
 * Brute-Force / Back-Tracking's implementation: ```brute_force.h```. With multi-threading (much faster): ```brute_force_multithreads.h```.
 
