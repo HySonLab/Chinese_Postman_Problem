@@ -2,6 +2,14 @@
 ## Author: Dr. Truong Son Hy
 ## Copyright 2023
 
+### Overview
+
+The overall organization is as follows:
+* ```graph_library/``` stores the graph library including implementation of all graph algorithms and data structures.
+* ```data_generation/``` stores the code to generate data.
+* ```data/``` stores the (generated) data.
+* ```experiments/``` stores all the code and scripts for experiments.
+
 ### Data generation
 * Data generation is based on paper "The Chinese Postman Problem with Load-Dependent Costs" https://pubsonline.informs.org/doi/abs/10.1287/trsc.2017.0774
 
