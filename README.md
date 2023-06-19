@@ -14,11 +14,11 @@ The overall organization is as follows:
 
 ### Graph Library (```graph_library/```)
 
-* Graph object's implementation: ```Graph.h```.
-* **Meta-heuristics (e.g., greedy, ILS, VNS)**' implementation: ```meta_heuristics.h```. With multi-threading (much faster): ```meta_heuristics_multithreads.h```.
-* **Evolutionary Algorithm (EA)**'s implementation: ```evolutionary_algorithm.h```. With multi-threading (much faster): ```evolutionary_algorithm_multithreads.h```.
-* **Ant Colony Optimization (ACO)**'s implementation: ```ant_colony_optimization.h```. With multi-threading (much faster): ```ant_colony_optimization_multithreads.h```.
-* Brute-Force / Back-Tracking's implementation: ```brute_force.h```. With multi-threading (much faster): ```brute_force_multithreads.h```.
+* Implementation for the graph data structure and basic algorithms: ```Graph.h```.
+* **Meta-heuristics (e.g., greedy, ILS, VNS)** implementation: ```meta_heuristics.h```. With multi-threading (much faster): ```meta_heuristics_multithreads.h```.
+* **Evolutionary Algorithm (EA)** implementation: ```evolutionary_algorithm.h```. With multi-threading (much faster): ```evolutionary_algorithm_multithreads.h```.
+* **Ant Colony Optimization (ACO)** implementation: ```ant_colony_optimization.h```. With multi-threading (much faster): ```ant_colony_optimization_multithreads.h```.
+* **Brute-Force / Back-Tracking** implementation: ```brute_force.h```. With multi-threading (much faster): ```brute_force_multithreads.h```.
 
 
 ### Data generation (```data_generation/```)
@@ -35,17 +35,17 @@ The overall organization is as follows:
 * Example of how to load / save graph from / to file, use the object and run the Floyd's algorithm: ```test_graph.cpp```.
 * Test the dynamic programming for finding the optimal directions of edges: ```test_dp.cpp```.
 
-**Experiments for meta-heuristics:**
+**Meta-heuristics:**
 * Test the **Greedy Constructive Heuristics**: ```test_greedy.cpp```. Usage: ```g++ test_greedy.cpp -o test_greedy```, then ```./test_greedy [file name]```.
 * Test the **Iterative Local Search (ILS)**: ```test_ils.cpp```. Usage: ```g++ test_ils.cpp -o test_ils```, then ```./test_ils [file name]```.
 * Test the **Iterative Local Search (ILS)** with multi-threading (much faster): ```test_ils_multithreads.cpp```. Usage: ```g++ test_ils_multithreads.cpp -lpthread```, then ```./a.out [file name]```.
 * Test the **Variable Neighborhood Search (VNS)**: ```test_vns.cpp```. Usage: ```g++ test_vns.cpp -o test_vns```, then ```./test_vns [file name]```.
 
-**Evolutionary Algorithms:**
+**Evolutionary Algorithm (EA):**
 * Test the Evolutionary Algorithm: ```test_ea.cpp```. Usage: ```g++ test_ea.cpp -o test_ea```, then ```./test_ea [file name]```.
 * Test the Evolutionary Algorithm with multi-threading (much faster): ```test_ea_multithreads.cpp```. Usage: ```g++ test_ea_multithreads.cpp -lpthread```, then ```./a.out [file name]```.
 
-**Ant Colony Optimization:**
+**Ant Colony Optimization (ACO):**
 * Test the Ant Colony Optimization: ```test_aco.cpp```. Usage: ```g++ test_aco.cpp -o test_aco```, then ```./test_aco [file name]```.
 * Test the Ant Colony Optimization with multi-threading (much faster): ```test_aco_multithreads.cpp```. Usage: ```g++ test_aco_multithreads.cpp -lpthread```, then ```./a.out [file name]```.
 
@@ -55,5 +55,5 @@ The overall organization is as follows:
 
 **Scripts:**
 * Example (script) of running all the baselines including brute-force: ```test_all_baselines.sh```. Usage: ```sh test_all_baselines.sh```.
-* Example (script) of running only meta-heuristics and evolutionary algorithm: ```test_heuristics.sh```. Usage: ```sh test_heuristics.sh```.
+* Example (script) of running only meta-heuristics, evolutionary algorithm and ant colony optimization: ```test_heuristics.sh```. Usage: ```sh test_heuristics.sh```.
 
