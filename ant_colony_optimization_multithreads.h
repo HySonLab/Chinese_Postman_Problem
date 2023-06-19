@@ -1,4 +1,4 @@
-// Ant colony optimization (ACO) for the load-dependent Chinese postman problem
+// Ant colony optimization (ACO) with multi-threading for the load-dependent Chinese postman problem
 // Author: Dr. Truong Son Hy
 // Copyright 2023
 
@@ -13,18 +13,19 @@
 #include <thread>
 #include <algorithm>
 #include <assert.h>
+#include <thread>
 
 #include "Graph.h"
 #include "meta_heuristics.h"
 
 using namespace std;
 
-// +-------------------------------+
-// | Ant Colony Optimization (ACO) |
-// +-------------------------------+
+// +----------------------------------------------------+
+// | Ant Colony Optimization (ACO) with multi-threading |
+// +----------------------------------------------------+
 
 // Search 
-int state_index(const int first, const int second, const vector<Edge> &edges) {
+static int state_index(const int first, const int second, const vector<Edge> &edges) {
 	for (int i = 0; i < edges.size(); ++i) {
 		if ((first == edges[i].first) && (second == edges[i].second)) {
 			return 2 * i;
@@ -37,13 +38,13 @@ int state_index(const int first, const int second, const vector<Edge> &edges) {
 }
 
 // Random number from 0 to 1
-double rand_double(const int MAX_RANGE = 1000) {
+static double rand_double(const int MAX_RANGE = 1000) {
 	double r = rand() % (MAX_RANGE + 1);
 	return r / (double)(MAX_RANGE);
 }
 
 // Ant's random walk
-void ant_walk(
+static void ant_walk(
 	Graph *graph, 
 	double **tau, 
 	double **eta, 
@@ -154,12 +155,13 @@ void ant_walk(
 	}
 }
 
-// Ant Colony Optimization (ACO)
-pair< vector<Edge>, double> Ant_Colony_Optimization(
+// Ant Colony Optimization (ACO) with multi-threading
+pair< vector<Edge>, double> Ant_Colony_Optimization_MultiThreads(
 	Graph *graph, 
 	const int k_max = 1000, 
 	const int num_ants = 10, 
-	const bool verbose = false
+	const bool verbose = false,
+	const int num_threads = 14
 ) {
 	// Result
 	pair< vector<Edge>, double> result;
@@ -299,38 +301,71 @@ pair< vector<Edge>, double> Ant_Colony_Optimization(
 		}
 	}
 
-	// Process
-	int *state_path = new int [m];
-	Edge *sequence = new Edge [m];
-	int *direction = new int [m];
-	double cost;
+	// Memory for multi-threading
+	std::thread threads[num_threads];	
 
+	int **state_path = new int* [num_threads];
+	Edge **sequence = new Edge* [num_threads];
+	int **direction = new int* [num_threads];
+	double *cost = new double [num_threads];
+
+	for (int t = 0; t < num_threads; ++t) {
+		state_path[t] = new int [m];
+		sequence[t] = new Edge [m];
+		direction[t] = new int [m];
+	}
+
+	// Process
 	for (int k = 1; k <= k_max; ++k) {
 		// For each ant
-		for (int ant = 0; ant < num_ants; ++ant) {
-			// Random walk
-			ant_walk(graph, tau, eta, origin_state, state_path, sequence, direction, cost);
+		int start = 0;
+		while (start < num_ants) {
+			// Batch
+			int finish;
+			if (start + num_threads - 1 < num_ants) {
+				finish = start + num_threads - 1;
+			} else {
+				finish = num_ants - 1;
+			}
+
+			// Multi-Threads
+			int count = 0;
+			for (int ant = start; ant <= finish; ++ant) {
+				// Random walk
+            	threads[count] = std::thread(ant_walk, graph, tau, eta, origin_state, state_path[count], sequence[count], direction[count], std::ref(cost[count]));
+				++count;
+			}
+
+			// Threads Synchronization
+			for (int t = 0; t < count; ++t) {
+				threads[t].join();
+			}
 
 			// Update the trace of pheromone
-			int state = origin_state;
-			for (int i = 0; i < m; ++i) {
-				assert(state_path[i] >= 0);
-				assert(state_path[i] < 2 * m);
-
-				// Increase the pheromone on this path
-				tau[state][state_path[i]] += 1.0 / sqrt(cost);
-				
-				state = state_path[i];
-			}
-
-			// Update the best solution
-			if (cost < result.second) {
-				result.first.clear();
+			for (int t = 0; t < count; ++t) {
+				int state = origin_state;
 				for (int i = 0; i < m; ++i) {
-					result.first.push_back(sequence[i]);
+					assert(state_path[t][i] >= 0);
+					assert(state_path[t][i] < 2 * m);
+
+					// Increase the pheromone on this path
+					tau[state][state_path[t][i]] += 1.0 / sqrt(cost[t]);
+
+					state = state_path[t][i];
 				}
-				result.second = cost;
-			}
+
+				// Update the best solution
+				if (cost[t] < result.second) {
+					result.first.clear();
+					for (int i = 0; i < m; ++i) {
+						result.first.push_back(sequence[t][i]);
+					}
+					result.second = cost[t];
+				}
+
+            }
+
+			start = finish + 1;
 		}
 
 		if (verbose) {

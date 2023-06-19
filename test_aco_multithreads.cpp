@@ -1,4 +1,4 @@
-// Testing the Ant Colony Optimization (ACO) for the load-dependent Chinese postman problem
+// Testing the Ant Colony Optimization (ACO) with multi-threading for the load-dependent Chinese postman problem
 // Author: Dr. Truong Son Hy
 // Copyright 2023
 
@@ -14,7 +14,7 @@
 #include <assert.h>
 
 #include "Graph.h"
-#include "ant_colony_optimization.h"
+#include "ant_colony_optimization_multithreads.h"
 
 using namespace std;
 using namespace std::chrono;
@@ -39,7 +39,7 @@ int main(int argc, char **argv) {
     // cout << "All-pair shortest paths:\n" << to_str(graph -> shortest_path) << endl;
 
 	// Variable Neighborhood Search
-	pair< vector<Edge>, double> result = Ant_Colony_Optimization(graph);
+	pair< vector<Edge>, double> result = Ant_Colony_Optimization_MultiThreads(graph);
 	const vector<Edge> sigma = result.first;
 	const double cost = result.second;
 
