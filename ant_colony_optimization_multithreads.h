@@ -161,6 +161,7 @@ pair< vector<Edge>, double> Ant_Colony_Optimization_MultiThreads(
 	const int k_max = 1000, 
 	const int num_ants = 10, 
 	const bool verbose = false,
+	const double rho = 0.8, // For updating pheromone
 	const int num_threads = 14
 ) {
 	// Epsilon constant
@@ -318,8 +319,21 @@ pair< vector<Edge>, double> Ant_Colony_Optimization_MultiThreads(
 		direction[t] = new int [m];
 	}
 
+	// The amount of pheromone to increase
+	double **delta_tau = new double* [num_states];
+	for (int i = 0; i < num_states; ++i) {
+		delta_tau[i] = new double [num_states];
+	}
+
 	// Process
 	for (int k = 1; k <= k_max; ++k) {
+		// The amount of pheromone to increase in this iteration
+		for (int i = 0; i < num_states; ++i) {
+			for (int j = 0; j < num_states; ++j) {
+				delta_tau[i][j] = 0.0;
+			}
+		}
+
 		// For each ant
 		int start = 0;
 		while (start < num_ants) {
@@ -352,7 +366,7 @@ pair< vector<Edge>, double> Ant_Colony_Optimization_MultiThreads(
 					assert(state_path[t][i] < 2 * m);
 
 					// Increase the pheromone on this path
-					tau[state][state_path[t][i]] += 1.0 / sqrt(cost[t]);
+					delta_tau[state][state_path[t][i]] += 1.0 / sqrt(cost[t]);
 
 					state = state_path[t][i];
 				}
@@ -371,6 +385,13 @@ pair< vector<Edge>, double> Ant_Colony_Optimization_MultiThreads(
 			start = finish + 1;
 		}
 
+		// Increase the pheromone
+		for (int i = 0; i < num_states; ++i) {
+			for (int j = 0; j < num_states; ++j) {
+				tau[i][j] = rho * tau[i][j] + delta_tau[i][j];
+			}
+		}
+
 		if (verbose) {
 			if ((k + 1) % 10 == 0) {
 				cout << "Completed " << k << " iterations." << endl;
@@ -382,9 +403,11 @@ pair< vector<Edge>, double> Ant_Colony_Optimization_MultiThreads(
 	for (int i = 0; i < num_states; ++i) {
 		delete[] tau[i];
 		delete[] eta[i];
+		delete[] delta_tau[i];
 	}
 	delete[] tau;
 	delete[] eta;
+	delete[] delta_tau;
 	delete[] state_path;
 	delete[] sequence;
 	delete[] direction;

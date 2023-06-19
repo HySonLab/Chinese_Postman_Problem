@@ -159,7 +159,8 @@ pair< vector<Edge>, double> Ant_Colony_Optimization(
 	Graph *graph, 
 	const int k_max = 1000, 
 	const int num_ants = 10, 
-	const bool verbose = false
+	const bool verbose = false,
+	const double rho = 0.8 // For updating pheromone
 ) {
 	// Epsilon constant
 	const double epsilon = 1e-3;
@@ -308,7 +309,19 @@ pair< vector<Edge>, double> Ant_Colony_Optimization(
 	int *direction = new int [m];
 	double cost;
 
+	double **delta_tau = new double* [num_states];
+	for (int i = 0; i < num_states; ++i) {
+		delta_tau[i] = new double [num_states];
+	}
+
 	for (int k = 1; k <= k_max; ++k) {
+		// The amount of pheromone to increase in this iteration
+		for (int i = 0; i < num_states; ++i) {
+			for (int j = 0; j < num_states; ++j) {
+				delta_tau[i][j] = 0.0;
+			}
+		}
+
 		// For each ant
 		for (int ant = 0; ant < num_ants; ++ant) {
 			// Random walk
@@ -321,7 +334,7 @@ pair< vector<Edge>, double> Ant_Colony_Optimization(
 				assert(state_path[i] < 2 * m);
 
 				// Increase the pheromone on this path
-				tau[state][state_path[i]] += 1.0 / sqrt(cost);
+				delta_tau[state][state_path[i]] += 1.0 / sqrt(cost);
 				
 				state = state_path[i];
 			}
@@ -336,6 +349,13 @@ pair< vector<Edge>, double> Ant_Colony_Optimization(
 			}
 		}
 
+		// Increase the pheromone
+		for (int i = 0; i < num_states; ++i) {
+			for (int j = 0; j < num_states; ++j) {
+				tau[i][j] = rho * tau[i][j] + delta_tau[i][j];
+			}
+		}
+
 		if (verbose) {
 			cout << "Completed " << k << " iterations." << endl;
 		}
@@ -345,9 +365,11 @@ pair< vector<Edge>, double> Ant_Colony_Optimization(
 	for (int i = 0; i < num_states; ++i) {
 		delete[] tau[i];
 		delete[] eta[i];
+		delete[] delta_tau[i];
 	}
 	delete[] tau;
 	delete[] eta;
+	delete[] delta_tau;
 	delete[] state_path;
 	delete[] sequence;
 	delete[] direction;
