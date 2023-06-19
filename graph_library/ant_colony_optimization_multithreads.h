@@ -15,8 +15,8 @@
 #include <assert.h>
 #include <thread>
 
-#include "Graph.h"
-#include "meta_heuristics.h"
+#include "../graph_library/Graph.h"
+#include "../graph_library/meta_heuristics.h"
 
 using namespace std;
 

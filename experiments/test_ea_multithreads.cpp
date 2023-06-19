@@ -1,4 +1,4 @@
-// Testing the Evolutionary Algorithm (EA) for the load-dependent Chinese postman problem
+// Testing the Evolutionary Algorithm (EA) with multi-threading for the load-dependent Chinese postman problem
 // Author: Dr. Truong Son Hy
 // Copyright 2023
 
@@ -13,8 +13,8 @@
 #include <thread>
 #include <assert.h>
 
-#include "Graph.h"
-#include "evolutionary_algorithm_multithreads.h"
+#include "../graph_library/Graph.h"
+#include "../graph_library/evolutionary_algorithm_multithreads.h"
 
 using namespace std;
 using namespace std::chrono;

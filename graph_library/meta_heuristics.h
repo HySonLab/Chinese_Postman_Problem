@@ -1,4 +1,4 @@
-// Meta-heuristics for the load-dependent Chinese postman problem
+// Meta-heuristics (e.g., greedy, ILS, and VNS) for the load-dependent Chinese postman problem
 // Author: Dr. Truong Son Hy
 // Copyright 2023
 
@@ -15,7 +15,7 @@
 #include <assert.h>
 #include <thread>
 
-#include "Graph.h"
+#include "../graph_library/Graph.h"
 
 using namespace std;
 

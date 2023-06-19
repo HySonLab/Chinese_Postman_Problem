@@ -13,8 +13,8 @@
 #include <thread>
 #include <assert.h>
 
-#include "Graph.h"
-#include "ant_colony_optimization_multithreads.h"
+#include "../graph_library/Graph.h"
+#include "../graph_library/ant_colony_optimization_multithreads.h"
 
 using namespace std;
 using namespace std::chrono;
@@ -49,7 +49,7 @@ int main(int argc, char **argv) {
 	// Dynamic programming
 	pair< vector< vector<double> >, vector<int> > dp = dynamic_programming(graph, sigma);
 
-	cout << "Cost (Ant Colony Optimization): " << dp.first[0][0] << endl;
+	cout << "Cost (Ant Colony Optimization with multi-threading): " << dp.first[0][0] << endl;
 	assert(abs(cost - dp.first[0][0]) < 1e-6);
 
 	// Ending timepoint

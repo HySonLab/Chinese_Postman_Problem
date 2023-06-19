@@ -13,8 +13,8 @@
 #include <thread>
 #include <assert.h>
 
-#include "Graph.h"
-#include "evolutionary_algorithm.h"
+#include "../graph_library/Graph.h"
+#include "../graph_library/evolutionary_algorithm.h"
 
 using namespace std;
 using namespace std::chrono;

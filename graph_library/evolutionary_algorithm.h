@@ -1,4 +1,4 @@
-// Evolutionary algorithm for the load-dependent Chinese postman problem
+// Evolutionary Algorithm (EA) for the load-dependent Chinese postman problem
 // Author: Dr. Truong Son Hy
 // Copyright 2023
 
@@ -14,8 +14,8 @@
 #include <algorithm>
 #include <assert.h>
 
-#include "Graph.h"
-#include "meta_heuristics.h"
+#include "../graph_library/Graph.h"
+#include "../graph_library/meta_heuristics.h"
 
 using namespace std;
 

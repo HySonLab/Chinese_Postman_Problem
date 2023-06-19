@@ -16,7 +16,7 @@
 using namespace std;
 
 // Hyper-parameters
-const string directory = "data/";
+const string directory = "../data/";
 const int MAX_X = 10;
 const int MAX_Y = 10;
 const int MAX_Q = MAX_X * MAX_Y;

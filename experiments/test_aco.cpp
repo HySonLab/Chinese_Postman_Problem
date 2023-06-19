@@ -13,8 +13,8 @@
 #include <thread>
 #include <assert.h>
 
-#include "Graph.h"
-#include "ant_colony_optimization.h"
+#include "../graph_library/Graph.h"
+#include "../graph_library/ant_colony_optimization.h"
 
 using namespace std;
 using namespace std::chrono;

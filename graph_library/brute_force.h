@@ -14,7 +14,7 @@
 #include <algorithm>
 #include <assert.h>
 
-#include "Graph.h"
+#include "../graph_library/Graph.h"
 
 using namespace std;
 

@@ -13,14 +13,14 @@
 #include <thread>
 #include <assert.h>
 
-#include "Graph.h"
+#include "../graph_library/Graph.h"
 
 using namespace std;
 
 // Main program
 int main(int argc, char **argv) {
     // Load the input graph
-    Graph *graph = new Graph("data/sample_input_1.txt");
+    Graph *graph = new Graph("../data/sample_input_1.txt");
 
     // Run the Floyd's algorithm
     graph -> Floyd_algorithm();

@@ -1,4 +1,4 @@
-// Testing the Iterative Local Search (ILS) for the load-dependent Chinese postman problem
+// Testing the Iterative Local Search (ILS) with multi-threading for the load-dependent Chinese postman problem
 // Author: Dr. Truong Son Hy
 // Copyright 2023
 
@@ -13,8 +13,8 @@
 #include <thread>
 #include <assert.h>
 
-#include "Graph.h"
-#include "meta_heuristics_multithreads.h"
+#include "../graph_library/Graph.h"
+#include "../graph_library/meta_heuristics_multithreads.h"
 
 using namespace std;
 using namespace std::chrono;
@@ -49,7 +49,7 @@ int main(int argc, char **argv) {
 	// Dynamic programming
 	pair< vector< vector<double> >, vector<int> > dp = dynamic_programming(graph, sigma);
 
-	cout << "Cost (Iterated Local Search): " << dp.first[0][0] << endl;
+	cout << "Cost (Iterated Local Search with multi-threading): " << dp.first[0][0] << endl;
 	assert(abs(cost - dp.first[0][0]) < 1e-6);
 
 	// Ending timepoint

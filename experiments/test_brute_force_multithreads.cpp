@@ -1,4 +1,4 @@
-// Testing Brute-Force / Back-Tracking for the load-dependent Chinese postman problem
+// Testing Brute-Force / Back-Tracking with multi-threading for the load-dependent Chinese postman problem
 // Author: Dr. Truong Son Hy
 // Copyright 2023
 
@@ -13,7 +13,7 @@
 #include <thread>
 #include <assert.h>
 
-#include "brute_force_multithreads.h"
+#include "../graph_library/brute_force_multithreads.h"
 
 using namespace std;
 using namespace std::chrono;
@@ -45,7 +45,7 @@ int main(int argc, char **argv) {
 	// Dynamic programming
 	pair< vector< vector<double> >, vector<int> > dp = dynamic_programming(graph, sigma);
 
-	cout << "Cost (Brute-Force): " << dp.first[0][0] << endl;
+	cout << "Cost (Brute-Force with multi-threading): " << dp.first[0][0] << endl;
 	assert(abs(cost - dp.first[0][0]) < 1e-6);
 
 	// Ending timepoint

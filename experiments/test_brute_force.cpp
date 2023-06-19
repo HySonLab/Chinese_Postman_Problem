@@ -13,7 +13,7 @@
 #include <thread>
 #include <assert.h>
 
-#include "brute_force.h"
+#include "../graph_library/brute_force.h"
 
 using namespace std;
 using namespace std::chrono;

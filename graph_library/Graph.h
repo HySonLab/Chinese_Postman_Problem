@@ -1,4 +1,4 @@
-// Graph structure for the load-dependent Chinese postman problem
+// Graph algorithms and data structure for the load-dependent Chinese postman problem
 // Author: Dr. Truong Son Hy
 // Copyright 2023
 
