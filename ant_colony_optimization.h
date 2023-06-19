@@ -161,6 +161,9 @@ pair< vector<Edge>, double> Ant_Colony_Optimization(
 	const int num_ants = 10, 
 	const bool verbose = false
 ) {
+	// Epsilon constant
+	const double epsilon = 1e-3;
+
 	// Result
 	pair< vector<Edge>, double> result;
 
@@ -193,15 +196,15 @@ pair< vector<Edge>, double> Ant_Colony_Optimization(
 	// Deposit some pheromone
 	for (int i = 0; i < m; ++i) {
 		// From the original state
-		tau[origin_state][2 * i] = 1.0;
-		tau[origin_state][2 * i + 1] = 1.0;
+		tau[origin_state][2 * i] = epsilon;
+		tau[origin_state][2 * i + 1] = epsilon;
 
 		// Between other states
 		for (int j = i + 1; j < m; ++j) {
-			tau[2 * i][2 * j] = 1.0;
-			tau[2 * i + 1][2 * j] = 1.0;
-			tau[2 * i][2 * j + 1] = 1.0;
-            tau[2 * i + 1][2 * j + 1] = 1.0;
+			tau[2 * i][2 * j] = epsilon;
+			tau[2 * i + 1][2 * j] = epsilon;
+			tau[2 * i][2 * j + 1] = epsilon;
+            tau[2 * i + 1][2 * j + 1] = epsilon;
 		}
 	}
 
@@ -232,7 +235,7 @@ pair< vector<Edge>, double> Ant_Colony_Optimization(
 		assert(state < 2 * m);
 
 		// Increase pheromone on this path
-		tau[prev_state, state] += (m - i);
+		tau[prev_state][state] += epsilon;
 
 		prev_state = state;
 	}
@@ -257,11 +260,11 @@ pair< vector<Edge>, double> Ant_Colony_Optimization(
 
 		// State 2 * k
 		c = (W + sum_Q) * graph -> shortest_path[start_node][i] + (W + sum_Q - q / 2) * d;
-		eta[origin_state][2 * k] = 1.0 / c;
+		eta[origin_state][2 * k] = 1.0 / sqrt(c);
 
 		// State 2 * k + 1
 		c = (W + sum_Q) * graph -> shortest_path[start_node][j] + (W + sum_Q - q / 2) * d;
-		eta[origin_state][2 * k + 1] = 1.0 / c;
+		eta[origin_state][2 * k + 1] = 1.0 / sqrt(c);
 	}
 
 	// Initialize priori knowledge between other states
@@ -280,22 +283,22 @@ pair< vector<Edge>, double> Ant_Colony_Optimization(
 			// State 2 * k1 to 2 * k2
 			// i1 -> j1 -> i2 -> j2
 			c = (W + q) * graph -> shortest_path[j1][i2] + (W + q / 2) * d;
-			eta[2 * k1][2 * k2] = 1.0 / c;
+			eta[2 * k1][2 * k2] = 1.0 / sqrt(c);
 
 			// State 2 * k1 + 1 to 2 * k2
 			// j1 -> i1 -> i2 -> j2
 			c = (W + q) * graph -> shortest_path[i1][i2] + (W + q / 2) * d;
-			eta[2 * k1 + 1][2 * k2] = 1.0 / c;
+			eta[2 * k1 + 1][2 * k2] = 1.0 / sqrt(c);
 
 			// State 2 * k1 to 2 * k2 + 1
 			// i1 -> j1 -> j2 -> i2
 			c = (W + q) * graph -> shortest_path[j1][j2] + (W + q / 2) * d;
-			eta[2 * k1][2 * k2 + 1] = 1.0 / c;
+			eta[2 * k1][2 * k2 + 1] = 1.0 / sqrt(c);
 
 			// State 2 * k1 + 1 to 2 * k2 + 1
 			// j1 -> i1 -> j2 -> i2
 			c = (W + q) * graph -> shortest_path[i1][j2] + (W + q / 2) * d;
-			eta[2 * k1 + 1][2 * k2 + 1] = 1.0 / c;
+			eta[2 * k1 + 1][2 * k2 + 1] = 1.0 / sqrt(c);
 		}
 	}
 
