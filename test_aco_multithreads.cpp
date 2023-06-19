@@ -21,6 +21,9 @@ using namespace std::chrono;
 
 // Main program
 int main(int argc, char **argv) {
+	// Fix random seed
+	srand(0);
+
 	// Starting timepoint
     auto start = high_resolution_clock::now();
 
