@@ -15,9 +15,9 @@ The overall organization is as follows:
 ### Graph Library (```graph_library/```)
 
 * Graph object's implementation: ```Graph.h```.
-* Meta-heuristics' implementation: ```meta_heuristics.h```. With multi-threading (much faster): ```meta_heuristics_multithreads.h```.
-* Evolutionary Algorithm's implementation: ```evolutionary_algorithm.h```. With multi-threading (much faster): ```evolutionary_algorithm_multithreads.h```.
-* Ant Colony Optimization's implementation: ```ant_colony_optimization.h```. With multi-threading (much faster): ```ant_colony_optimization_multithreads.h```.
+* **Meta-heuristics (e.g., greedy, ILS, VNS)**' implementation: ```meta_heuristics.h```. With multi-threading (much faster): ```meta_heuristics_multithreads.h```.
+* **Evolutionary Algorithm (EA)**'s implementation: ```evolutionary_algorithm.h```. With multi-threading (much faster): ```evolutionary_algorithm_multithreads.h```.
+* **Ant Colony Optimization (ACO)**'s implementation: ```ant_colony_optimization.h```. With multi-threading (much faster): ```ant_colony_optimization_multithreads.h```.
 * Brute-Force / Back-Tracking's implementation: ```brute_force.h```. With multi-threading (much faster): ```brute_force_multithreads.h```.
 
 
@@ -36,10 +36,10 @@ The overall organization is as follows:
 * Test the dynamic programming for finding the optimal directions of edges: ```test_dp.cpp```.
 
 **Experiments for meta-heuristics:**
-* Test the Greedy Constructive Heuristics: ```test_greedy.cpp```. Usage: ```g++ test_greedy.cpp -o test_greedy```, then ```./test_greedy [file name]```.
-* Test the Iterative Local Search: ```test_ils.cpp```. Usage: ```g++ test_ils.cpp -o test_ils```, then ```./test_ils [file name]```.
-* Test the Iterative Local Search with multi-threading (much faster): ```test_ils_multithreads.cpp```. Usage: ```g++ test_ils_multithreads.cpp -lpthread```, then ```./a.out [file name]```.
-* Test the Variable Neighborhood Search: ```test_vns.cpp```. Usage: ```g++ test_vns.cpp -o test_vns```, then ```./test_vns [file name]```.
+* Test the **Greedy Constructive Heuristics**: ```test_greedy.cpp```. Usage: ```g++ test_greedy.cpp -o test_greedy```, then ```./test_greedy [file name]```.
+* Test the **Iterative Local Search (ILS)**: ```test_ils.cpp```. Usage: ```g++ test_ils.cpp -o test_ils```, then ```./test_ils [file name]```.
+* Test the **Iterative Local Search (ILS)** with multi-threading (much faster): ```test_ils_multithreads.cpp```. Usage: ```g++ test_ils_multithreads.cpp -lpthread```, then ```./a.out [file name]```.
+* Test the **Variable Neighborhood Search (VNS)**: ```test_vns.cpp```. Usage: ```g++ test_vns.cpp -o test_vns```, then ```./test_vns [file name]```.
 
 **Evolutionary Algorithms:**
 * Test the Evolutionary Algorithm: ```test_ea.cpp```. Usage: ```g++ test_ea.cpp -o test_ea```, then ```./test_ea [file name]```.
