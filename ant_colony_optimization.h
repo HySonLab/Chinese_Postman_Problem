@@ -342,7 +342,6 @@ pair< vector<Edge>, double> Ant_Colony_Optimization(
 	}
 
 	// Release memory
-	/*
 	for (int i = 0; i < num_states; ++i) {
 		delete[] tau[i];
 		delete[] eta[i];
@@ -352,7 +351,6 @@ pair< vector<Edge>, double> Ant_Colony_Optimization(
 	delete[] state_path;
 	delete[] sequence;
 	delete[] direction;
-	*/
 
 	return result;
 }
