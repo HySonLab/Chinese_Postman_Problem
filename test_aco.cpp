@@ -46,7 +46,7 @@ int main(int argc, char **argv) {
 	// Dynamic programming
 	pair< vector< vector<double> >, vector<int> > dp = dynamic_programming(graph, sigma);
 
-	cout << "Cost (Evolutionary Algorithm): " << dp.first[0][0] << endl;
+	cout << "Cost (Ant Colony Optimization): " << dp.first[0][0] << endl;
 	assert(abs(cost - dp.first[0][0]) < 1e-6);
 
 	// Ending timepoint
