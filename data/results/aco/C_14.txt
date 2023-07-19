@@ -1,0 +1,8 @@
+File name: ../data/C_14.txt
+Number of nodes: 17
+Number of edges: 35
+Number of deliver-edges (q > 0): 17
+Cost (Ant Colony Optimization with multi-threading): 36956.9
+Running time (milliseconds): 434
+Running time (seconds): 0
+

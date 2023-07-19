@@ -1,0 +1,8 @@
+File name: ../data/H_22.txt
+Number of nodes: 24
+Number of edges: 30
+Number of deliver-edges (q > 0): 16
+Cost (Ant Colony Optimization with multi-threading): 132437
+Running time (milliseconds): 519
+Running time (seconds): 0
+

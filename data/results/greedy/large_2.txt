@@ -1,0 +1,8 @@
+File name: ../data/large_2.txt
+Number of nodes: 10
+Number of edges: 16
+Number of deliver-edges (q > 0): 16
+Cost (Greedy Constructive Heuristics): 29092.1
+Running time (milliseconds): 4
+Running time (seconds): 0
+

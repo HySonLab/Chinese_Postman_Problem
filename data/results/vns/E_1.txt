@@ -1,0 +1,8 @@
+File name: ../data/E_1.txt
+Number of nodes: 7
+Number of edges: 12
+Number of deliver-edges (q > 0): 12
+Cost (Variable Neighborhood Search): 2574.37
+Running time (milliseconds): 132
+Running time (seconds): 0
+

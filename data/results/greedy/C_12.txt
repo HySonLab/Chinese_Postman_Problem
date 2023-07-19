@@ -1,0 +1,8 @@
+File name: ../data/C_12.txt
+Number of nodes: 14
+Number of edges: 32
+Number of deliver-edges (q > 0): 18
+Cost (Greedy Constructive Heuristics): 532223
+Running time (milliseconds): 5
+Running time (seconds): 0
+

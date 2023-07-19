@@ -1,0 +1,84 @@
+File name: ../data/H_2.txt
+Number of nodes: 6
+Number of edges: 11
+Number of deliver-edges (q > 0): 3
+Initial population: 10
+After 1 iterations: Population = 1
+After 2 iterations: Population = 2
+After 3 iterations: Population = 2
+After 4 iterations: Population = 2
+After 5 iterations: Population = 3
+After 6 iterations: Population = 2
+After 7 iterations: Population = 2
+After 8 iterations: Population = 3
+After 9 iterations: Population = 2
+After 10 iterations: Population = 4
+After 11 iterations: Population = 2
+After 12 iterations: Population = 3
+After 13 iterations: Population = 2
+After 14 iterations: Population = 3
+After 15 iterations: Population = 2
+After 16 iterations: Population = 3
+After 17 iterations: Population = 2
+After 18 iterations: Population = 2
+After 19 iterations: Population = 2
+After 20 iterations: Population = 2
+After 21 iterations: Population = 2
+After 22 iterations: Population = 2
+After 23 iterations: Population = 2
+After 24 iterations: Population = 2
+After 25 iterations: Population = 2
+After 26 iterations: Population = 3
+After 27 iterations: Population = 2
+After 28 iterations: Population = 2
+After 29 iterations: Population = 3
+After 30 iterations: Population = 2
+After 31 iterations: Population = 4
+After 32 iterations: Population = 2
+After 33 iterations: Population = 3
+After 34 iterations: Population = 2
+After 35 iterations: Population = 3
+After 36 iterations: Population = 2
+After 37 iterations: Population = 2
+After 38 iterations: Population = 3
+After 39 iterations: Population = 2
+After 40 iterations: Population = 2
+After 41 iterations: Population = 3
+After 42 iterations: Population = 2
+After 43 iterations: Population = 2
+After 44 iterations: Population = 3
+After 45 iterations: Population = 2
+After 46 iterations: Population = 3
+After 47 iterations: Population = 2
+After 48 iterations: Population = 3
+After 49 iterations: Population = 2
+After 50 iterations: Population = 3
+After 51 iterations: Population = 2
+After 52 iterations: Population = 2
+After 53 iterations: Population = 2
+After 54 iterations: Population = 2
+After 55 iterations: Population = 2
+After 56 iterations: Population = 2
+After 57 iterations: Population = 2
+After 58 iterations: Population = 3
+After 59 iterations: Population = 2
+After 60 iterations: Population = 2
+After 61 iterations: Population = 2
+After 62 iterations: Population = 3
+After 63 iterations: Population = 2
+After 64 iterations: Population = 2
+After 65 iterations: Population = 2
+After 66 iterations: Population = 3
+After 67 iterations: Population = 2
+After 68 iterations: Population = 3
+After 69 iterations: Population = 2
+After 70 iterations: Population = 2
+After 71 iterations: Population = 3
+After 72 iterations: Population = 2
+After 73 iterations: Population = 3
+After 74 iterations: Population = 2
+After 75 iterations: Population = 3
+Cost (Evolutionary Algorithm with multi-threading): 2948.41
+Running time (milliseconds): 25
+Running time (seconds): 0
+

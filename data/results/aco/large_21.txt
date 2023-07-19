@@ -1,0 +1,8 @@
+File name: ../data/large_21.txt
+Number of nodes: 20
+Number of edges: 53
+Number of deliver-edges (q > 0): 53
+Cost (Ant Colony Optimization with multi-threading): 111110
+Running time (milliseconds): 2247
+Running time (seconds): 2
+

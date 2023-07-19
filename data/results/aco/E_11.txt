@@ -1,0 +1,8 @@
+File name: ../data/E_11.txt
+Number of nodes: 10
+Number of edges: 18
+Number of deliver-edges (q > 0): 18
+Cost (Ant Colony Optimization with multi-threading): 57945.7
+Running time (milliseconds): 460
+Running time (seconds): 0
+

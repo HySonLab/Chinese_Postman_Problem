@@ -1,0 +1,8 @@
+File name: ../data/H_8.txt
+Number of nodes: 9
+Number of edges: 25
+Number of deliver-edges (q > 0): 12
+Cost (Variable Neighborhood Search): 37907.4
+Running time (milliseconds): 132
+Running time (seconds): 0
+

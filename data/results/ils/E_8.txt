@@ -1,0 +1,8 @@
+File name: ../data/E_8.txt
+Number of nodes: 10
+Number of edges: 18
+Number of deliver-edges (q > 0): 18
+Cost (Iterated Local Search with multi-threading): 37098.9
+Running time (milliseconds): 858
+Running time (seconds): 0
+

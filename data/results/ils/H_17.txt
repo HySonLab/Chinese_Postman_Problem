@@ -1,0 +1,8 @@
+File name: ../data/H_17.txt
+Number of nodes: 18
+Number of edges: 22
+Number of deliver-edges (q > 0): 13
+Cost (Iterated Local Search with multi-threading): 7053.47
+Running time (milliseconds): 365
+Running time (seconds): 0
+
