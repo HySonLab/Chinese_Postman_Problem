@@ -3,6 +3,6 @@ Number of nodes: 14
 Number of edges: 32
 Number of deliver-edges (q > 0): 17
 Cost (Ant Colony Optimization with multi-threading): 51538.4
-Running time (milliseconds): 446
+Running time (milliseconds): 399
 Running time (seconds): 0
 

@@ -3,6 +3,6 @@ Number of nodes: 17
 Number of edges: 35
 Number of deliver-edges (q > 0): 15
 Cost (Greedy Constructive Heuristics): 54801.7
-Running time (milliseconds): 3
+Running time (milliseconds): 2
 Running time (seconds): 0
 

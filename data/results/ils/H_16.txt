@@ -3,6 +3,6 @@ Number of nodes: 14
 Number of edges: 48
 Number of deliver-edges (q > 0): 24
 Cost (Iterated Local Search with multi-threading): 253860
-Running time (milliseconds): 1987
+Running time (milliseconds): 1923
 Running time (seconds): 1
 

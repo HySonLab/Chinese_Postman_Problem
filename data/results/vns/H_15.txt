@@ -3,6 +3,6 @@ Number of nodes: 14
 Number of edges: 48
 Number of deliver-edges (q > 0): 23
 Cost (Variable Neighborhood Search): 21681.5
-Running time (milliseconds): 811
+Running time (milliseconds): 766
 Running time (seconds): 0
 

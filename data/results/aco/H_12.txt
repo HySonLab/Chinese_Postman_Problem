@@ -2,7 +2,7 @@ File name: ../data/H_12.txt
 Number of nodes: 11
 Number of edges: 35
 Number of deliver-edges (q > 0): 8
-Cost (Ant Colony Optimization with multi-threading): 35214.9
-Running time (milliseconds): 919
+Cost (Ant Colony Optimization with multi-threading): 35451.5
+Running time (milliseconds): 244
 Running time (seconds): 0
 

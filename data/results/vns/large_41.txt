@@ -1,0 +1,8 @@
+File name: ../data/large_41.txt
+Number of nodes: 30
+Number of edges: 162
+Number of deliver-edges (q > 0): 162
+Cost (Variable Neighborhood Search): 6.54794e+06
+Running time (milliseconds): 255216
+Running time (seconds): 255
+

@@ -1,0 +1,8 @@
+File name: ../data/large_31.txt
+Number of nodes: 30
+Number of edges: 110
+Number of deliver-edges (q > 0): 110
+Cost (Iterated Local Search with multi-threading): 212196
+Running time (milliseconds): 175949
+Running time (seconds): 175
+

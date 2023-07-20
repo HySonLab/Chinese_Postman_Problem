@@ -1,0 +1,4 @@
+File name: ../data/large_46.txt
+Number of nodes: 30
+Number of edges: 232
+Number of deliver-edges (q > 0): 232

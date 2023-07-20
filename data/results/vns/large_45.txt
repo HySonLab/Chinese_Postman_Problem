@@ -1,0 +1,8 @@
+File name: ../data/large_45.txt
+Number of nodes: 30
+Number of edges: 232
+Number of deliver-edges (q > 0): 232
+Cost (Variable Neighborhood Search): 1.96933e+06
+Running time (milliseconds): 679074
+Running time (seconds): 679
+

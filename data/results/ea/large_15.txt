@@ -79,6 +79,6 @@ After 73 iterations: Population = 4
 After 74 iterations: Population = 4
 After 75 iterations: Population = 4
 Cost (Evolutionary Algorithm with multi-threading): 30171.7
-Running time (milliseconds): 4891
-Running time (seconds): 4
+Running time (milliseconds): 5149
+Running time (seconds): 5
 

@@ -1,0 +1,8 @@
+File name: ../data/large_3.txt
+Number of nodes: 10
+Number of edges: 16
+Number of deliver-edges (q > 0): 16
+Cost (Iterated Local Search with multi-threading): 6691.71
+Running time (milliseconds): 682
+Running time (seconds): 0
+
