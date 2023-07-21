@@ -1,0 +1,8 @@
+File name: ../data/large_6.txt
+Number of nodes: 10
+Number of edges: 16
+Number of deliver-edges (q > 0): 16
+Cost (Variable Neighborhood Search): 649536
+Running time (milliseconds): 295
+Running time (seconds): 0
+

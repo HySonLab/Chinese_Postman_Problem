@@ -1,0 +1,8 @@
+File name: ../data/small_7.txt
+Number of nodes: 7
+Number of edges: 9
+Number of deliver-edges (q > 0): 9
+Cost (Iterated Local Search with multi-threading): 1789.02
+Running time (milliseconds): 152
+Running time (seconds): 0
+

@@ -1,0 +1,8 @@
+File name: ../data/small_10.txt
+Number of nodes: 7
+Number of edges: 9
+Number of deliver-edges (q > 0): 9
+Cost (Variable Neighborhood Search): 22273.7
+Running time (milliseconds): 77
+Running time (seconds): 0
+
