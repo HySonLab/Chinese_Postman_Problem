@@ -41,7 +41,9 @@ int main(void) {
 
 	// Compilation
 	system("g++ test_greedy.cpp -o greedy");
+	system("g++ test_greedy_2.cpp -o greedy_2");
 	system("g++ test_ils_multithreads.cpp -o ils -lpthread");
+	system("g++ test_ils_2.cpp -o ils_2");
 	system("g++ test_vns.cpp -o vns");
 	system("g++ test_ea_multithreads.cpp -o ea -lpthread");
 	system("g++ test_aco_multithreads.cpp -o aco -lpthread");
@@ -49,7 +51,9 @@ int main(void) {
 	// Create new directories
 	system("mkdir ../data/results/");
 	system("mkdir ../data/results/greedy");
+	system("mkdir ../data/results/greedy_2");
 	system("mkdir ../data/results/ils");
+	system("mkdir ../data/results/ils_2");
 	system("mkdir ../data/results/vns");
 	system("mkdir ../data/results/ea");
 	system("mkdir ../data/results/aco");
@@ -88,6 +92,17 @@ int main(void) {
         command = "./aco " + input_fn + " > ../data/results/aco/" + file_names[i];
         system(command.c_str());
         cout << "Done ACO algorithm" << endl;
+
+		// New proposal for Greedy
+        command = "./greedy_2 " + input_fn + " > ../data/results/greedy_2/" + file_names[i];
+        system(command.c_str());
+        cout << "Done Greedy_2 algorithm" << endl;
+
+		// New proposal for ILS
+        command = "./ils_2 " + input_fn + " > ../data/results/ils_2/" + file_names[i];
+        system(command.c_str());
+        cout << "Done ILS_2 algorithm" << endl;
+
 	}
 
 	return(0);
