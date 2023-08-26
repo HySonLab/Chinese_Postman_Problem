@@ -82,6 +82,145 @@ pair< vector<Edge>, double> Greedy_Constructive_Heuristic(Graph *graph) {
 }
 
 
+// +-----------------------------------------------+
+// | Greedy Constructive Heuristics (new proposal) |
+// +-----------------------------------------------+
+pair< vector<Edge>, double> Greedy_Constructive_Heuristic_2(Graph *graph) {
+    // Information
+    const int num_nodes = graph -> num_nodes;
+    const int m = graph -> num_deliver_edges;
+
+    vector<Edge> edges;
+    edges.clear();
+    for (int k = 0; k < m; ++k) {
+        edges.push_back(Edge(graph -> deliver_edges[k]));
+    }
+
+    // Sort the list of edges
+    sort(edges.begin(), edges.end());
+
+	// Mask
+	vector<bool> mask;
+	mask.clear();
+	for (int k = 0; k < m; ++k) {
+		mask.push_back(false);
+	}
+
+    // Result
+    vector<Edge> sigma_star;
+    sigma_star.clear();
+    double best;
+
+	// Algorithm
+    for (int i = 0; i < m; ++i) {
+		// If this edge is used already, move on
+		if (mask[i] == true) {
+			continue;
+		}
+		mask[i] = true;
+
+		// We need to find where to put it in
+        double z_min = INF;
+        vector<Edge> sigma_prime;
+
+        // The i-th edge
+        Edge e = Edge(edges[i]);
+
+		int position = -1;
+		int start = -1;
+		int finish = -1;
+
+        for (int j = 0; j <= sigma_star.size(); ++j) {
+            // Create another list of edges by adding the i-th edge into the j-th position of sigma_star
+            vector<Edge> sigma;
+            sigma.clear();
+            for (int k = 0; k < j; ++k) {
+                sigma.push_back(Edge(sigma_star[k]));
+            }
+
+			// Add the edge
+            sigma.push_back(e);
+            			
+			for (int k = j; k < sigma_star.size(); ++k) {
+                sigma.push_back(Edge(sigma_star[k]));
+            }
+
+            // Dynamic programming
+            pair< vector< vector<double> >, vector<int> > dp = dynamic_programming(graph, sigma);
+
+            // Update
+            const double z = dp.first[0][0];
+            if (z < z_min) {
+                z_min = z;
+                sigma_prime = sigma;
+				
+				position = j;
+				if (position == 0) {
+					start = graph -> start_node;
+				} else {
+					if (dp.second[j - 1] == 0) {
+						start = sigma_prime[j - 1].second;
+					} else {
+						start = sigma_prime[j - 1].first;
+					}
+				}
+
+				if (dp.second[j] == 0) {
+					finish = sigma_prime[j].first;
+				} else {
+					finish = sigma_prime[j].second;
+				}
+            }
+        }
+
+		assert(position != -1);
+	
+		// Update sigma_star with the shortest path trick
+		sigma_star.clear();
+		for (int k = 0; k < position; ++k) {
+			sigma_star.push_back(Edge(sigma_prime[k]));
+		}
+
+		// Add the shortest path
+		assert(position != -1);
+		assert(start != -1);
+		assert(finish != -1);
+
+		const vector<int> path = graph -> dijkstra_path[start][finish];
+
+		for (int k = 1; k < path.size(); ++k) {
+			const int u = path[k - 1];
+			const int v = path[k];
+			for (int t = i + 1; t < m; ++t) {
+				if (!mask[t]) {
+					if ((u == edges[t].first) && (v == edges[t].second)) {
+						sigma_star.push_back(Edge(edges[t]));
+						mask[t] = true;
+						break;
+					}
+					if ((u == edges[t].second) && (v == edges[t].first)) {
+                        sigma_star.push_back(Edge(edges[t]));
+						mask[t] = true;
+                        break;
+                    }
+				}
+			}
+		}
+
+		// Add the rest
+		for (int k = position; k < sigma_prime.size(); ++k) {
+			sigma_star.push_back(Edge(sigma_prime[k]));
+		}
+
+		// Dynamic programming
+		pair< vector< vector<double> >, vector<int> > dp = dynamic_programming(graph, sigma_star);
+		best = dp.first[0][0];
+    }
+
+    return make_pair(sigma_star, best);
+}
+
+
 // +-------------------------------------------+
 // | Random exchange with probability 1/factor |
 // +-------------------------------------------+
@@ -102,6 +241,98 @@ vector<Edge> random_exchange(const vector<Edge> edges, const int factor = 5) {
 	}
 
 	return result;
+}
+
+
+// +-----------------------+
+// | 2-MOVE (new proposal) |
+// +-----------------------+
+
+// For single-thread
+pair< vector<Edge>, double> Method_2_MOVE(Graph *graph, const vector<Edge> sigma) {
+    double best = INF;
+    vector<Edge> result;
+
+	// Search
+	for (int i = 0; i < sigma.size(); ++i) {
+		for (int j = 0; j < sigma.size(); ++j) {
+			if (i == j) {
+				continue;
+			}
+
+			// The rest elements except i-th and j-th
+			vector<Edge> A;
+			A.clear();
+			for (int k = 0; k < sigma.size(); ++k) {
+				if ((k != i) && (k != j)) {
+					A.push_back(Edge(sigma[k]));
+				}
+			}
+			assert(A.size() == sigma.size() - 2);
+
+			// Search for the best place to put the i-th in
+			vector<Edge> B;
+			B.clear();
+			double B_value = INF;
+
+			for (int k = 0; k < A.size(); ++k) {
+				vector<Edge> candidate;
+				candidate.clear();
+				for (int t = 0; t < k; ++t) {
+					candidate.push_back(Edge(A[t]));
+				}
+				candidate.push_back(Edge(sigma[i]));
+				for (int t = k; t < A.size(); ++t) {
+					candidate.push_back(Edge(A[t]));
+				}
+
+				// Update
+				pair< vector< vector<double> >, vector<int> > dp = dynamic_programming(graph, candidate);
+				const double cost = dp.first[0][0];
+				if (cost < B_value) {
+					B_value = cost;
+					B = candidate;
+				}
+			}
+
+			assert(B.size() == sigma.size() - 1);
+
+			// Search for the best place to put the j-th in
+			vector<Edge> C;
+			C.clear();
+			double C_value = INF;
+
+			for (int k = 0; k < B.size(); ++k) {
+				vector<Edge> candidate;
+				candidate.clear();
+				for (int t = 0; t < k; ++t) {
+					candidate.push_back(Edge(B[t]));
+				}
+				candidate.push_back(Edge(sigma[j]));
+				for (int t = k; t < B.size(); ++t) {
+					candidate.push_back(Edge(B[t]));
+				}
+
+				// Update
+				pair< vector< vector<double> >, vector<int> > dp = dynamic_programming(graph, candidate);
+				const double cost = dp.first[0][0];
+				if (cost < C_value) {
+					C_value = cost;
+					C = candidate;
+				}
+			}
+
+			assert(C.size() == sigma.size());
+
+			// Update
+			if (C_value < best) {
+				best = C_value;
+				result = C;
+			}
+		}
+	}
+
+    return make_pair(result, best);
 }
 
 
@@ -282,6 +513,40 @@ pair< vector<Edge>, double> Iterated_Local_Search(Graph *graph, const int k_max 
 	}
 
 	return make_pair(sigma_star, best);
+}
+
+
+// +-----------------------------------------------------------+
+// | New proposal - Iterated Local Search (ILS) Meta-heuristic |
+// +-----------------------------------------------------------+
+
+// Single-thread implementation
+pair< vector<Edge>, double> Iterated_Local_Search_2(Graph *graph, const int k_max = 75, const bool verbose = false) {
+    // New Greedy Constructive Heuristic
+    pair< vector<Edge>, double > greedy = Greedy_Constructive_Heuristic_2(graph);
+    vector<Edge> sigma_star = greedy.first;
+    double best = greedy.second;
+
+    // Iterative
+    for (int k = 1; k <= k_max; ++k) {
+        // Random exchange
+        vector<Edge> sigma = random_exchange(sigma_star);
+
+        // 2-MOVE
+        pair< vector<Edge>, double> Result_2_MOVE = Method_2_MOVE(graph, sigma);
+
+        // Update
+        if (Result_2_MOVE.second < best) {
+            best = Result_2_MOVE.second;
+            sigma_star = Result_2_MOVE.first;
+        }
+
+        if (verbose) {
+            cout << "Done " << k << " iterations." << endl;
+        }
+    }
+
+    return make_pair(sigma_star, best);
 }
 
 

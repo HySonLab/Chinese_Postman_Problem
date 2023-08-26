@@ -20,7 +20,7 @@ using namespace std;
 // Main program
 int main(int argc, char **argv) {
 	// Load graph from file
-	Graph *graph = new Graph("../data/E_10.txt");
+	Graph *graph = new Graph("../data/sample_input_1.txt");
 	
 	// View the graph's content
 	cout << graph -> get_content() << endl;
