@@ -57,6 +57,10 @@ int main(int argc, char **argv) {
     auto duration = duration_cast<seconds>(stop - start);
     cout << "Running time (seconds): " << duration.count() << endl << endl;
 
+	for (int i = 0; i < sigma.size(); ++i) {
+		cout << sigma[i].first << " " << sigma[i].second << " " << dp.second[i] << endl;
+	}
+
 	return 0;
 }
 

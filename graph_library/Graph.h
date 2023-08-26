@@ -15,6 +15,7 @@
 #include <vector>
 #include <thread>
 #include <algorithm>
+#include <queue>
 #include <assert.h>
 
 using namespace std;
@@ -332,6 +333,120 @@ public:
 		}
 	}
 
+	// Dijkstra's algorithm to find all-pair shortest paths
+	void Dijkstra_algorithm() {
+		// Adjacency
+		vector< vector< pair<int, double> > > adj;
+
+		for (int i = 0; i < this -> num_nodes; ++i) {
+			vector< pair<int, double> > vect;
+			vect.clear();
+			adj.push_back(vect);
+		}
+
+		assert(this -> num_edges == this -> edges.size());
+		for (int i = 0; i < this -> num_edges; ++i) {
+			const int first = this -> edges[i].first;
+			const int second = this -> edges[i].second;
+			const double d = this -> edges[i].d;
+			const double q = this -> edges[i].q;
+
+			adj[first].push_back(make_pair(second, d));
+			adj[second].push_back(make_pair(first, d));
+		}
+
+		// For all pairs' shortest paths
+		this -> dijkstra_d.clear();
+		for (int i = 0; i < this -> num_nodes; ++i) {
+			vector<double> vect;
+			vect.clear();
+			for (int j = 0; j < this -> num_nodes; ++j) {
+				vect.push_back(INF);
+			}
+			this -> dijkstra_d.push_back(vect);
+			this -> dijkstra_d[i][i] = 0;
+		}
+
+		this -> dijkstra_path.clear();
+		for (int i = 0; i < this -> num_nodes; ++i) {
+			vector< vector<int> > matrix;
+			matrix.clear();
+			for (int j = 0; j < this -> num_nodes; ++j) {
+				vector<int> vect;
+				vect.clear();
+				matrix.push_back(vect);
+			}
+			dijkstra_path.push_back(matrix);
+		}
+
+		// Dijkstra's algorithm
+		for (int start = 0; start < this -> num_nodes; ++start) {
+			// Memories
+			vector<double> d;
+			vector<int> trace;
+			priority_queue< pair<double, int> > q;
+
+			// Initialization
+			d.clear();
+			trace.clear();
+
+			for (int i = 0; i < this -> num_nodes; ++i) {
+				d.push_back(INF);
+				trace.push_back(-1);
+			}
+
+			d[start] = 0;
+			q.push(make_pair(0, start));
+
+			// Algorithm
+			while (!q.empty()) {
+				const int u = q.top().second;
+				q.pop();
+				for (int i = 0; i < adj[u].size(); ++i) {
+					const int v = adj[u][i].first;
+					const double w = adj[u][i].second;
+					if (d[v] > d[u] + w) {
+						d[v] = d[u] + w;
+						trace[v] = u;
+						q.push(make_pair(-d[v], v));
+					}
+				}
+			}
+
+			// Get the results
+			for (int i = 0; i < this -> num_nodes; ++i) {
+				// Get the distance
+				this -> dijkstra_d[start][i] = d[i];
+
+				// Get the path
+				if (d[i] == INF) {
+					continue;
+				}
+
+				if (i == start) {
+					continue;
+				}
+
+				vector<int> path;
+				path.clear();
+				int v = i;
+				while (true) {
+					path.push_back(v);
+					if (v == start) {
+						break;
+					}
+					assert(trace[v] != -1);
+					v = trace[v];
+				}
+
+				this -> dijkstra_path[start][i].clear();
+				for (int j = path.size() - 1; j >= 0; --j) {
+					this -> dijkstra_path[start][i].push_back(path[j]);
+				}
+			}
+		}
+	}
+
 	// Staring node is always indexed as 0
 	const int start_node = 0;
 
@@ -356,8 +471,12 @@ public:
 	// Position of each node
 	vector<Coordinate> position;
 
-	// All-pair shortest paths (from Floyd's algorithm)
+	// All-pair shortest paths from Floyd's algorithm
 	vector< vector<double> > shortest_path;
+
+	// All-pair shortest paths from Dijkstra's algorithm
+	vector< vector<double> > dijkstra_d;
+	vector< vector< vector<int> > > dijkstra_path;
 };
 
 

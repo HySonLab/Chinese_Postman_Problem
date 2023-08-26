@@ -67,7 +67,7 @@ int main(void) {
 		// Greedy
 		command = "./greedy " + input_fn + " > ../data/results/greedy/" + file_names[i];
 		system(command.c_str());
-		cout << "Done greedy algorithm" << endl;
+		cout << "Done Greedy algorithm" << endl;
 
 		// ILS 
 		command = "./ils " + input_fn + " > ../data/results/ils/" + file_names[i];
@@ -87,7 +87,7 @@ int main(void) {
     	// ACO
         command = "./aco " + input_fn + " > ../data/results/aco/" + file_names[i];
         system(command.c_str());
-        cout << "Done aco algorithm" << endl;
+        cout << "Done ACO algorithm" << endl;
 	}
 
 	return(0);
