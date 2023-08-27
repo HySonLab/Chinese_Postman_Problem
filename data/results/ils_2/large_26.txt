@@ -1,0 +1,8 @@
+File name: ../data/large_26.txt
+Number of nodes: 20
+Number of edges: 75
+Number of deliver-edges (q > 0): 75
+Cost (New Iterated Local Search): 438733
+Running time (milliseconds): 7601064
+Running time (seconds): 7601
+

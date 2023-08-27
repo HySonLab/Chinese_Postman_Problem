@@ -1,0 +1,8 @@
+File name: ../data/H_23.txt
+Number of nodes: 27
+Number of edges: 33
+Number of deliver-edges (q > 0): 15
+Cost (Greedy Constructive Heuristics 2): 18759.6
+Running time (milliseconds): 4
+Running time (seconds): 0
+

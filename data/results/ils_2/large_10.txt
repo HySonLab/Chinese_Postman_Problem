@@ -1,0 +1,8 @@
+File name: ../data/large_10.txt
+Number of nodes: 10
+Number of edges: 20
+Number of deliver-edges (q > 0): 20
+Cost (New Iterated Local Search): 91659.5
+Running time (milliseconds): 50493
+Running time (seconds): 50
+

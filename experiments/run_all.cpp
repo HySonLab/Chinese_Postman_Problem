@@ -67,7 +67,8 @@ int main(void) {
 		cout << "Input: " << input_fn << endl;
 
 		string command;
-
+		
+		/*
 		// Greedy
 		command = "./greedy " + input_fn + " > ../data/results/greedy/" + file_names[i];
 		system(command.c_str());
@@ -92,6 +93,7 @@ int main(void) {
         command = "./aco " + input_fn + " > ../data/results/aco/" + file_names[i];
         system(command.c_str());
         cout << "Done ACO algorithm" << endl;
+		*/
 
 		// New proposal for Greedy
         command = "./greedy_2 " + input_fn + " > ../data/results/greedy_2/" + file_names[i];

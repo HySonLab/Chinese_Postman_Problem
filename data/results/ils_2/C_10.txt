@@ -1,0 +1,8 @@
+File name: ../data/C_10.txt
+Number of nodes: 14
+Number of edges: 32
+Number of deliver-edges (q > 0): 12
+Cost (New Iterated Local Search): 52198.7
+Running time (milliseconds): 5723
+Running time (seconds): 5
+

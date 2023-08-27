@@ -1,0 +1,8 @@
+File name: ../data/H_20.txt
+Number of nodes: 21
+Number of edges: 26
+Number of deliver-edges (q > 0): 13
+Cost (New Iterated Local Search): 89256.2
+Running time (milliseconds): 8598
+Running time (seconds): 8
+

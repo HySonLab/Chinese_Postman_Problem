@@ -1,0 +1,4 @@
+File name: ../data/large_29.txt
+Number of nodes: 20
+Number of edges: 75
+Number of deliver-edges (q > 0): 75

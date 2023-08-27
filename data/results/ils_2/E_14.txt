@@ -1,0 +1,8 @@
+File name: ../data/E_14.txt
+Number of nodes: 20
+Number of edges: 32
+Number of deliver-edges (q > 0): 32
+Cost (New Iterated Local Search): 145293
+Running time (milliseconds): 273023
+Running time (seconds): 273
+
