@@ -42,7 +42,8 @@ int main(int argc, char **argv) {
     // cout << "All-pair shortest paths:\n" << to_str(graph -> shortest_path) << endl;
 
 	// Variable Neighborhood Search
-	pair< vector<Edge>, double> result = Directed_Evolution(graph);
+	const int k = 5;
+	pair< vector<Edge>, double> result = Directed_Evolution(graph, k);
 	const vector<Edge> sigma = result.first;
 	const double cost = result.second;
 
