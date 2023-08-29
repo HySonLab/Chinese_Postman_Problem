@@ -61,4 +61,4 @@ The overall organization is as follows:
 **Scripts:**
 * Example (script) of running all the baselines including brute-force: ```test_all_baselines.sh```. Usage: ```sh test_all_baselines.sh```.
 * Example (script) of running only meta-heuristics, evolutionary algorithm and ant colony optimization: ```test_heuristics.sh```. Usage: ```sh test_heuristics.sh```.
-
+* C++ code to run all baselines: ```run_all.cpp```
