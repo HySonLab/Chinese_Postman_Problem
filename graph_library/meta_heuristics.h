@@ -244,12 +244,12 @@ vector<Edge> random_exchange(const vector<Edge> edges, const int factor = 5) {
 }
 
 
-// +-----------------------+
-// | 2-MOVE (new proposal) |
-// +-----------------------+
+// +---------------------------+
+// | 2-MOVE-OPT (new proposal) |
+// +---------------------------+
 
 // For single-thread
-pair< vector<Edge>, double> Method_2_MOVE(Graph *graph, const vector<Edge> sigma) {
+pair< vector<Edge>, double> Method_2_MOVE_OPT(Graph *graph, const vector<Edge> sigma) {
     double best = INF;
     vector<Edge> result;
 
@@ -333,6 +333,78 @@ pair< vector<Edge>, double> Method_2_MOVE(Graph *graph, const vector<Edge> sigma
 	}
 
     return make_pair(result, best);
+}
+
+
+// +-----------------------+
+// | k-MOVE (new proposal) |
+// +-----------------------+
+
+// For single-thread
+pair< vector<Edge>, double> Method_k_MOVE_OPT(Graph *graph, const vector<Edge> sigma, const vector<int> k_indices) {
+    double best = INF;
+    vector<Edge> result;
+
+	// Initialization
+	vector<bool> mask;
+	mask.clear();
+	for (int i = 0; i < sigma.size(); ++i) {
+		mask.push_back(true);
+	}
+	for (int i = 0; i < k_indices.size(); ++i) {
+		const int index = k_indices[i];
+		assert(index >= 0);
+		assert(index < sigma.size());
+		mask[index] = false;
+	}
+
+	vector<Edge> A;
+	A.clear();
+	for (int i = 0; i < sigma.size(); ++i) {
+		if (mask[i]) {
+			A.push_back(Edge(sigma[i]));
+		}
+	}
+	assert(A.size() + k_indices.size() == sigma.size());
+
+	// Put them back
+	for (int i = 0; i < k_indices.size(); ++i) {
+		const int index = k_indices[i];
+		const Edge e = sigma[index];
+
+		// Search for the best place to put the i-th in
+		vector<Edge> B;
+		B.clear();
+		double B_value = INF;
+
+		for (int k = 0; k < A.size(); ++k) {
+			vector<Edge> candidate;
+			candidate.clear();
+			for (int t = 0; t < k; ++t) {
+				candidate.push_back(Edge(A[t]));
+			}
+			candidate.push_back(Edge(e));
+			for (int t = k; t < A.size(); ++t) {
+				candidate.push_back(Edge(A[t]));
+			}
+
+			// Update
+			pair< vector< vector<double> >, vector<int> > dp = dynamic_programming(graph, candidate);
+			const double cost = dp.first[0][0];
+			if (cost < B_value) {
+				B_value = cost;
+				B = candidate;
+			}
+		}
+
+		A = B;
+		best = B_value;
+	}
+
+	result = A;
+	assert(result.size() == sigma.size());
+	
+	return make_pair(result, best);
 }
 
 
@@ -533,12 +605,12 @@ pair< vector<Edge>, double> Iterated_Local_Search_2(Graph *graph, const int k_ma
         vector<Edge> sigma = random_exchange(sigma_star);
 
         // 2-MOVE
-        pair< vector<Edge>, double> Result_2_MOVE = Method_2_MOVE(graph, sigma);
+        pair< vector<Edge>, double> Result_2_MOVE_OPT = Method_2_MOVE_OPT(graph, sigma);
 
         // Update
-        if (Result_2_MOVE.second < best) {
-            best = Result_2_MOVE.second;
-            sigma_star = Result_2_MOVE.first;
+        if (Result_2_MOVE_OPT.second < best) {
+            best = Result_2_MOVE_OPT.second;
+            sigma_star = Result_2_MOVE_OPT.first;
         }
 
         if (verbose) {
