@@ -1,4 +1,4 @@
-// Testing the Directed Evolution (DE) for the load-dependent Chinese postman problem
+// Testing the Directed Evolution (DE) with multi-threading for the load-dependent Chinese postman problem
 // Author: Dr. Truong Son Hy
 // Copyright 2023
 
@@ -14,7 +14,7 @@
 #include <assert.h>
 
 #include "../graph_library/Graph.h"
-#include "../graph_library/directed_evolution.h"
+#include "../graph_library/directed_evolution_multithreads.h"
 
 using namespace std;
 using namespace std::chrono;
@@ -43,14 +43,14 @@ int main(int argc, char **argv) {
 
 	// Variable Neighborhood Search
 	const int k = stoi(argv[2]);
-	pair< vector<Edge>, double> result = Directed_Evolution(graph, k);
+	pair< vector<Edge>, double> result = Directed_Evolution_MultiThreads(graph, k);
 	const vector<Edge> sigma = result.first;
 	const double cost = result.second;
 
 	// Dynamic programming
 	pair< vector< vector<double> >, vector<int> > dp = dynamic_programming(graph, sigma);
 
-	cout << "Cost (Directed Evolution k = " << k << "): " << dp.first[0][0] << endl;
+	cout << "Cost (Directed Evolution k = " << k << " with multi-threading): " << dp.first[0][0] << endl;
 	assert(abs(cost - dp.first[0][0]) < 1e-6);
 
 	// Ending timepoint

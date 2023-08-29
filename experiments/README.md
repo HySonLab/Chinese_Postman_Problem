@@ -15,6 +15,10 @@
 * Test the **Iterative Local Search (ILS)** with multi-threading (much faster): ```test_ils_multithreads.cpp```. Usage: ```g++ test_ils_multithreads.cpp -lpthread```, then ```./a.out [file name]```.
 * Test the **Variable Neighborhood Search (VNS)**: ```test_vns.cpp```. Usage: ```g++ test_vns.cpp -o test_vns```, then ```./test_vns [file name]```.
 
+**Directed Evolution (DE):**
+* Test the Directed Evolution: ```test_ea.cpp```. Usage: ```g++ test_de.cpp -o test_de```, then ```./test_de [file name] [k = 3, 4, 5, ...]```.
+* Test the Directed Evolution with multi-threading (much faster): ```test_de_multithreads.cpp```. Usage: ```g++ test_de_multithreads.cpp -lpthread```, then ```./a.out [file name] [k = 3, 4, 5, ...]```.
+
 **Evolutionary Algorithm (EA):**
 * Test the Evolutionary Algorithm: ```test_ea.cpp```. Usage: ```g++ test_ea.cpp -o test_ea```, then ```./test_ea [file name]```.
 * Test the Evolutionary Algorithm with multi-threading (much faster): ```test_ea_multithreads.cpp```. Usage: ```g++ test_ea_multithreads.cpp -lpthread```, then ```./a.out [file name]```.
@@ -29,5 +33,5 @@
 
 **Scripts:**
 * Example (script) of running all the baselines including brute-force: ```test_all_baselines.sh```. Usage: ```sh test_all_baselines.sh```.
-* Example (script) of running only meta-heuristics, evolutionary algorithm and ant colony optimization: ```test_heuristics.sh```. Usage: ```sh test_heuristics.sh```.
+* Example (script) of running only meta-heuristics, directed evolution, evolutionary algorithm and ant colony optimization: ```test_heuristics.sh```. Usage: ```sh test_heuristics.sh```.
 
