@@ -1,0 +1,13 @@
+File name: ../data/small_12.txt
+Number of nodes: 7
+Number of edges: 9
+Number of deliver-edges (q > 0): 9
+Done 1 iterations.
+Done 2 iterations.
+Done 3 iterations.
+Done 4 iterations.
+Early stop!
+Cost (Directed Evolution k = 3 with multi-threading): 94532.3
+Running time (milliseconds): 5
+Running time (seconds): 0
+

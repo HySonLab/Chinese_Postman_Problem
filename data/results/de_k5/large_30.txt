@@ -1,0 +1,29 @@
+File name: ../data/large_30.txt
+Number of nodes: 20
+Number of edges: 75
+Number of deliver-edges (q > 0): 75
+Done 1 iterations.
+Done 2 iterations.
+Done 3 iterations.
+Done 4 iterations.
+Done 5 iterations.
+Done 6 iterations.
+Done 7 iterations.
+Done 8 iterations.
+Done 9 iterations.
+Done 10 iterations.
+Done 11 iterations.
+Done 12 iterations.
+Done 13 iterations.
+Done 14 iterations.
+Done 15 iterations.
+Done 16 iterations.
+Done 17 iterations.
+Done 18 iterations.
+Done 19 iterations.
+Done 20 iterations.
+Early stop!
+Cost (Directed Evolution k = 5 with multi-threading): 1.03666e+07
+Running time (milliseconds): 2294
+Running time (seconds): 2
+

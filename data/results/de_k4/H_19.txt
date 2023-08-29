@@ -1,0 +1,15 @@
+File name: ../data/H_19.txt
+Number of nodes: 21
+Number of edges: 26
+Number of deliver-edges (q > 0): 15
+Done 1 iterations.
+Done 2 iterations.
+Done 3 iterations.
+Done 4 iterations.
+Done 5 iterations.
+Done 6 iterations.
+Early stop!
+Cost (Directed Evolution k = 4 with multi-threading): 10159.8
+Running time (milliseconds): 21
+Running time (seconds): 0
+

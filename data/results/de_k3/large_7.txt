@@ -1,0 +1,13 @@
+File name: ../data/large_7.txt
+Number of nodes: 10
+Number of edges: 20
+Number of deliver-edges (q > 0): 20
+Done 1 iterations.
+Done 2 iterations.
+Done 3 iterations.
+Done 4 iterations.
+Early stop!
+Cost (Directed Evolution k = 3 with multi-threading): 6949.57
+Running time (milliseconds): 28
+Running time (seconds): 0
+

@@ -1,0 +1,37 @@
+File name: ../data/large_46.txt
+Number of nodes: 30
+Number of edges: 232
+Number of deliver-edges (q > 0): 232
+Done 1 iterations.
+Done 2 iterations.
+Done 3 iterations.
+Done 4 iterations.
+Done 5 iterations.
+Done 6 iterations.
+Done 7 iterations.
+Done 8 iterations.
+Done 9 iterations.
+Done 10 iterations.
+Done 11 iterations.
+Done 12 iterations.
+Done 13 iterations.
+Done 14 iterations.
+Done 15 iterations.
+Done 16 iterations.
+Done 17 iterations.
+Done 18 iterations.
+Done 19 iterations.
+Done 20 iterations.
+Done 21 iterations.
+Done 22 iterations.
+Done 23 iterations.
+Done 24 iterations.
+Done 25 iterations.
+Done 26 iterations.
+Done 27 iterations.
+Done 28 iterations.
+Early stop!
+Cost (Directed Evolution k = 5 with multi-threading): 1.43342e+07
+Running time (milliseconds): 31511
+Running time (seconds): 31
+

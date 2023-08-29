@@ -1,0 +1,13 @@
+File name: ../data/C_16.txt
+Number of nodes: 17
+Number of edges: 35
+Number of deliver-edges (q > 0): 15
+Done 1 iterations.
+Done 2 iterations.
+Done 3 iterations.
+Done 4 iterations.
+Early stop!
+Cost (Directed Evolution k = 4 with multi-threading): 54801.7
+Running time (milliseconds): 14
+Running time (seconds): 0
+

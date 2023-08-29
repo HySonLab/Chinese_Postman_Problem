@@ -1,0 +1,15 @@
+File name: ../data/H_24.txt
+Number of nodes: 27
+Number of edges: 33
+Number of deliver-edges (q > 0): 14
+Done 1 iterations.
+Done 2 iterations.
+Done 3 iterations.
+Done 4 iterations.
+Done 5 iterations.
+Done 6 iterations.
+Early stop!
+Cost (Directed Evolution k = 3 with multi-threading): 90342.6
+Running time (milliseconds): 16
+Running time (seconds): 0
+
