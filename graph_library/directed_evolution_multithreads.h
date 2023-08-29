@@ -102,7 +102,7 @@ static void Method_k_MOVE(
 // Multi-threading implementation
 pair< vector<Edge>, double> Directed_Evolution_MultiThreads(
 	Graph *graph, 
-	const int k, 
+	const int input_k, 
 	const int num_variants = 10, 
 	const int early_stop = 5, 
 	const int num_iterations = 75, 
@@ -118,7 +118,15 @@ pair< vector<Edge>, double> Directed_Evolution_MultiThreads(
 
 	// Number of edges
 	const int m = sigma_star.size();
-	assert(k < m);
+	
+	// If k >= m
+    int value = -1;
+    if (input_k >= m) {
+        value = m - 1;
+    } else {
+        value = input_k;
+    }
+    const int k = value;
 
 	// Mask
 	vector<bool> mask;

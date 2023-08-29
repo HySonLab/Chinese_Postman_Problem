@@ -98,7 +98,7 @@ pair< vector<Edge>, double> Method_k_MOVE(Graph *graph, const vector<Edge> sigma
 // +-------------------------+
 
 // Single-thread implementation
-pair< vector<Edge>, double> Directed_Evolution(Graph *graph, const int k, const int num_variants = 10, const int early_stop = 5, const int num_iterations = 75, const bool verbose = true) {
+pair< vector<Edge>, double> Directed_Evolution(Graph *graph, const int input_k, const int num_variants = 10, const int early_stop = 5, const int num_iterations = 75, const bool verbose = true) {
     // New Greedy Constructive Heuristic
     pair< vector<Edge>, double > greedy = Greedy_Constructive_Heuristic(graph);
     vector<Edge> sigma_star = greedy.first;
@@ -106,6 +106,15 @@ pair< vector<Edge>, double> Directed_Evolution(Graph *graph, const int k, const 
 
 	// Number of edges
 	const int m = sigma_star.size();
+
+	// If k >= m
+	int value = -1;
+	if (input_k >= m) {
+		value = m - 1;
+	} else {
+		value = input_k;
+	}
+	const int k = value;
 
 	// Mask
 	vector<bool> mask;
