@@ -1,0 +1,8 @@
+File name: ../data/small_6.txt
+Number of nodes: 7
+Number of edges: 8
+Number of deliver-edges (q > 0): 8
+Cost (Greedy Constructive Heuristics 2): 146806
+Running time (milliseconds): 2
+Running time (seconds): 0
+
